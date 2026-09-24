@@ -35,7 +35,7 @@ function main() {
 
     console.log(`\nText: ${text}`)
     console.log(`Words: ${analyzer.getWordCount()}`)
-    console.log(`Sentences: ${analyzer.getSentencesCount()}`)
+    console.log(`Sentences: ${analyzer.getSentenceCount()}`)
   } catch (error) {
     console.error(
       'An unexpected error occurred during execution:',
