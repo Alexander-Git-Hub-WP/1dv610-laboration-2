@@ -62,4 +62,16 @@ export class TextAnalyzer {
 
     return sentenceCount
   }
+
+  /**
+   * Counts the number of uppercase letters in the text.
+   *
+   * @returns {number} The number of uppercase letters in the text.
+   */
+  getUppercaseCount() {
+    const uppercases = this.#text.match(/[A-ZÅÄÖ]/g) || []
+
+    return uppercases.length
+  }
+  
 }
