@@ -104,4 +104,24 @@ export class TextAnalyzer {
     return longestWord
   }
   
+  /**
+   * Gets the average length of all words in the text.
+   *
+   * @returns {number} The average length of all words in the text.
+   */
+  getAverageWordLength() {
+    const words = this.#text.split(/\s+/)
+    const wordCount = this.getWordCount()
+
+    let totalWordLength = 0
+
+    for (const word of words) {
+      if (word !== '') {
+        totalWordLength += word.length
+      }
+    }
+
+    return totalWordLength / wordCount
+  }
+  
 }

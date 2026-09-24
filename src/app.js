@@ -39,6 +39,7 @@ function main() {
     console.log(`Uppercase: ${analyzer.getUppercaseCount()}`)
     console.log(`Lowercase: ${analyzer.getLowercaseCount()}`)
     console.log(`Longest word: ${analyzer.getLongestWord()}`)
+    console.log(`Average word length: ${analyzer.getAverageWordLength()}`)
   } catch (error) {
     console.error(
       'An unexpected error occurred during execution:',
