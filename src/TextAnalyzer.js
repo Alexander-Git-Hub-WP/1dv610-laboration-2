@@ -84,5 +84,24 @@ export class TextAnalyzer {
 
     return lowercases.length
   }
+
+  /**
+   * Gets the longest word in the text.
+   *
+   * @returns {number} The longest word in the text.
+   */
+  getLongestWord() {
+    const words = this.#text.split(/\s+/)
+
+    let longestWord = ''
+
+    for (const word of words) {
+      if (word.length > longestWord.length) {
+        longestWord = word
+      }
+    }
+
+    return longestWord
+  }
   
 }
