@@ -73,5 +73,16 @@ export class TextAnalyzer {
 
     return uppercases.length
   }
+
+  /**
+   * Counts the number of lowercase letters in the text.
+   *
+   * @returns {number} The number of lowercase letters in the text.
+   */
+  getLowercaseCount() {
+    const lowercases = this.#text.match(/[a-zåäö]/g) || []
+
+    return lowercases.length
+  }
   
 }
