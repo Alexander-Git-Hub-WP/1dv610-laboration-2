@@ -41,4 +41,25 @@ export class TextAnalyzer {
 
     return wordCount
   }
+
+  /**
+   * Counts the number of sentences in the text.
+   *
+   * A sentence ends with a period, exclamation mark or question mark.
+   *
+   * @returns {number} The number of sentences in the text.
+   */
+  getSentenceCount() {
+    const sentences = this.#text.split(/[.!?]+/)
+
+    let sentenceCount = 0
+
+    for (const sentence of sentences) {
+      if (sentence !== '') {
+        sentenceCount++
+      }
+    }
+
+    return sentenceCount
+  }
 }
