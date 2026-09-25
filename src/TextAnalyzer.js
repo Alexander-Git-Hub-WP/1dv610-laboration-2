@@ -106,8 +106,9 @@ export class TextAnalyzer {
   
   /**
    * Gets the average length of all words in the text.
+   * The result is rounded to the nearest whole number.
    *
-   * @returns {number} The average length of all words in the text.
+   * @returns {number} The rounded average word length
    */
   getAverageWordLength() {
     const words = this.#text.split(/\s+/)
@@ -121,7 +122,7 @@ export class TextAnalyzer {
       }
     }
 
-    return totalWordLength / wordCount
+    return Math.round(totalWordLength / wordCount)
   }
   
 }
