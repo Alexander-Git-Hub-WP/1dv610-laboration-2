@@ -164,17 +164,7 @@ export class TextAnalyzer {
    * @returns {number} The number of characters in the text.
    */
   getCharacterCount() {
-    const characters = this.#text.split('')
-
-    let characterCount = 0
-
-    for (const character of characters) {
-      if (character !== '') {
-        characterCount++
-      }
-    }
-
-    return characterCount
+    return this.#text.length
   }
 
   /**
