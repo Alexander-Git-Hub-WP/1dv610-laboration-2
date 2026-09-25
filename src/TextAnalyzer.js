@@ -207,4 +207,17 @@ export class TextAnalyzer {
     
     return numbers.length
   }
+
+  /**
+   * Counts the number of letters in the text.
+   *
+   * @returns {number} The number of letters in the text.
+   */
+   getLetterCount() {
+    const uppercaseCount = this.getUppercaseCount()
+    const lowercaseCount = this.getLowercaseCount()
+
+    return uppercaseCount + lowercaseCount
+  }
+
 }
