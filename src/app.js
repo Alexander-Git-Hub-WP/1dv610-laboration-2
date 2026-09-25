@@ -43,6 +43,7 @@ function main() {
     console.log(`Average word length: ${analyzer.getAverageWordLength()}`)
     console.log(`Average words per sentence: ${analyzer.getAverageWordsPerSentence()}`)
     console.log(`Characters: ${analyzer.getCharacterCount()}`)
+     console.log(`Characters without whitespace: ${analyzer.getCharacterCountWithoutWhitespace()}`)
   } catch (error) {
     console.error(
       'An unexpected error occurred during execution:',

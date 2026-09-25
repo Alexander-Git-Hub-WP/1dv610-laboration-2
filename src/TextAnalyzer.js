@@ -176,4 +176,24 @@ export class TextAnalyzer {
 
     return characterCount
   }
+
+  /**
+   * Counts the number of all characters in the text excluding,
+   * whitespace characters, such as spaces, tabs or line breaks.
+   *
+   * @returns {number} The number of characters in the text.
+   */
+  getCharacterCountWithoutWhitespace() {
+    const characters = this.#text.replace(/\s+/g, '')
+
+    let characterCount = 0
+
+    for (const character of characters) {
+      if (character !== '') {
+        characterCount++
+      }
+    }
+
+    return characterCount
+  }
 }
