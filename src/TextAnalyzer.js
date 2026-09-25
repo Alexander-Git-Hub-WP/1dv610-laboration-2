@@ -196,4 +196,15 @@ export class TextAnalyzer {
 
     return characterCount
   }
+
+  /**
+   * Counts the number of numeric characters in the text.
+   *
+   * @returns {number} The number of numeric characters in the text.
+   */
+  getNumberCount() {
+    const numbers = this.#text.match(/\d/g) || []
+    
+    return numbers.length
+  }
 }
