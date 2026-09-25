@@ -93,7 +93,7 @@ export class TextAnalyzer {
   getLongestWord() {
     const words = this.#text.split(/\s+/)
 
-    let longestWord = ''
+    let longestWord = words[0]
 
     for (const word of words) {
       if (word.length > longestWord.length) {
@@ -103,6 +103,25 @@ export class TextAnalyzer {
 
     return longestWord
   }
+
+  /**
+   * Gets the shortest word in the text.
+   *
+   * @returns {string} The shortest word in the text.
+   */
+  getShortestWord() {
+    const words = this.#text.split(/\s+/)
+
+    let shortestWord = words[0]
+
+    for (const word of words) {
+      if (word.length < shortestWord.length) {
+        shortestWord = word
+      }
+    }
+
+    return shortestWord
+    }
   
   /**
    * Gets the average length of all words in the text.
