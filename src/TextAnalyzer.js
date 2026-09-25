@@ -143,5 +143,37 @@ export class TextAnalyzer {
 
     return Math.round(totalWordLength / wordCount)
   }
-  
+
+  /**
+   * Gets the average number of words in each sentence.
+   * The result is rounded to the nearest whole number.
+   *
+   * @returns {number} The rounded average number of words per sentence
+   */
+  getAverageWordsPerSentence() {
+    const wordCount = this.getWordCount()
+    const sentenceCount = this.getSentenceCount()
+
+    return Math.round(wordCount / sentenceCount)
+  }
+
+  /**
+   * Counts the number of all characters in the text including,
+   * whitespace characters, such as spaces, tabs or line breaks.
+   *
+   * @returns {number} The number of characters in the text.
+   */
+  getCharacterCount() {
+    const characters = this.#text.split('')
+
+    let characterCount = 0
+
+    for (const character of characters) {
+      if (character !== '') {
+        characterCount++
+      }
+    }
+
+    return characterCount
+  }
 }
