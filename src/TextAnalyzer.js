@@ -220,4 +220,35 @@ export class TextAnalyzer {
     return uppercaseCount + lowercaseCount
   }
 
+  /**
+   * Gets the most common word in the text.
+   *
+   * @returns {string} The most common word in the text.
+   */
+  getMostCommonWord() {
+    const words = this.#text.split(/\s+/)
+    const wordCounts = {}
+
+    for (const word of words) {
+      if (word !== '') {
+        if (wordCounts[word]) {
+          wordCounts[word]++
+        } else {
+          wordCounts[word] = 1
+        }
+      }
+    }
+
+    let mostCommonWord = ''
+    let highestCount = 0
+
+    for (const word in wordCounts) {
+      if (wordCounts[word] > highestCount) {
+        highestCount = wordCounts[word]
+        mostCommonWord = word
+      }
+    }
+
+    return mostCommonWord
+  }
 }

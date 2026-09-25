@@ -46,6 +46,7 @@ function main() {
     console.log(`Characters without whitespace: ${analyzer.getCharacterCountWithoutWhitespace()}`)
     console.log(`Numbers: ${analyzer.getNumberCount()}`)
     console.log(`Letters: ${analyzer.getLetterCount()}`)
+    console.log(`Most common word: ${analyzer.getMostCommonWord()}`)
   } catch (error) {
     console.error(
       'An unexpected error occurred during execution:',
