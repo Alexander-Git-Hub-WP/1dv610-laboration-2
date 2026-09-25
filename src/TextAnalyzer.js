@@ -176,15 +176,7 @@ export class TextAnalyzer {
   getCharacterCountWithoutWhitespace() {
     const characters = this.#text.replace(/\s+/g, '')
 
-    let characterCount = 0
-
-    for (const character of characters) {
-      if (character !== '') {
-        characterCount++
-      }
-    }
-
-    return characterCount
+    return characters.length
   }
 
   /**
@@ -241,4 +233,5 @@ export class TextAnalyzer {
 
     return mostCommonWord
   }
+
 }
