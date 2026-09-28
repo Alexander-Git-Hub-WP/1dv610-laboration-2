@@ -282,3 +282,29 @@ describe('getCharacterCount()', () => {
     expect(result).toBe(0)
   })
 })
+
+describe('getCharacterCountWithoutWhitespace()', () => {
+  it('should ignore spaces when counting characters', () => {
+    const analyzer = new TextAnalyzer('Hello beautiful world')
+    const result = analyzer.getCharacterCountWithoutWhitespace()
+    expect(result).toBe(19)
+  })
+
+  it('should ignore tabs and line breaks when counting characters', () => {
+    const analyzer = new TextAnalyzer('Hello\tworld\n!')
+    const result = analyzer.getCharacterCountWithoutWhitespace()
+    expect(result).toBe(11)
+  })
+
+  it('should count punctuation as characters', () => {
+    const analyzer = new TextAnalyzer('Hello!')
+    const result = analyzer.getCharacterCountWithoutWhitespace()
+    expect(result).toBe(6)
+  })
+
+  it('should return zero when the text only contains whitespace', () => {
+    const analyzer = new TextAnalyzer('   \t\n')
+    const result = analyzer.getCharacterCountWithoutWhitespace()
+    expect(result).toBe(0)
+  })
+})
