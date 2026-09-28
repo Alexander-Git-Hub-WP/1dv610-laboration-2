@@ -334,3 +334,35 @@ describe('getNumberCount()', () => {
     expect(result).toBe(0)
   })
 })
+
+describe('getLetterCount()', () => {
+  it('should count all letters in the text', () => {
+    const analyzer = new TextAnalyzer('Hello World')
+    const result = analyzer.getLetterCount()
+    expect(result).toBe(10)
+  })
+
+  it('should count both uppercase and lowercase letters', () => {
+    const analyzer = new TextAnalyzer('HELLO hello')
+    const result = analyzer.getLetterCount()
+    expect(result).toBe(10)
+  })
+
+  it('should treat Swedish letters as letters', () => {
+    const analyzer = new TextAnalyzer('ÅÄÖ åäö')
+    const result = analyzer.getLetterCount()
+    expect(result).toBe(6)
+  })
+
+  it('should not count numbers, spaces or punctuation as letters', () => {
+    const analyzer = new TextAnalyzer('Hello 123!?')
+    const result = analyzer.getLetterCount()
+    expect(result).toBe(5)
+  })
+
+  it('should return zero when the text contains no letters', () => {
+    const analyzer = new TextAnalyzer('123!?')
+    const result = analyzer.getLetterCount()
+    expect(result).toBe(0)
+  })
+})
