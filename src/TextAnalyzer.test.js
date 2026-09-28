@@ -366,3 +366,41 @@ describe('getLetterCount()', () => {
     expect(result).toBe(0)
   })
 })
+
+describe('getMostCommonWord()', () => {
+  it('should return the most common word', () => {
+    const analyzer = new TextAnalyzer('Hello world')
+    const result = analyzer.getMostCommonWord()
+    expect(result).toBe('hello')
+  })
+
+  it('should find the most common word regardless of its position', () => {
+    const analyzer = new TextAnalyzer('World hello world')
+    const result = analyzer.getMostCommonWord()
+    expect(result).toBe('world')
+  })
+
+  it('should ignore punctuation when counting words', () => {
+    const analyzer = new TextAnalyzer('Hello! Hello, world.')
+    const result = analyzer.getMostCommonWord()
+    expect(result).toBe('hello')
+  })
+
+  it('should treat words with different casing as different words', () => {
+    const analyzer = new TextAnalyzer('Hello hello HELLO')
+    const result = analyzer.getMostCommonWord()
+    expect(result).toBe('hello')
+  })
+
+  it('should treat Swedish letters as part of a word', () => {
+    const analyzer = new TextAnalyzer('färger färger blå blå färger')
+    const result = analyzer.getMostCommonWord()
+    expect(result).toBe('färger')
+  })
+
+  it('should return an empty string when the text contains no words', () => {
+    const analyzer = new TextAnalyzer('123 !?')
+    const result = analyzer.getMostCommonWord()
+    expect(result).toBe('')
+  })
+})
