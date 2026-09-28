@@ -251,3 +251,34 @@ describe('getAverageWordsPerSentence()', () => {
   })
 })
 
+describe('getCharacterCount()', () => {
+  it('should count all characters in the text', () => {
+    const analyzer = new TextAnalyzer('Hello')
+    const result = analyzer.getCharacterCount()
+    expect(result).toBe(5)
+  })
+
+  it('should count spaces as characters', () => {
+    const analyzer = new TextAnalyzer('Hello world')
+    const result = analyzer.getCharacterCount()
+    expect(result).toBe(11)
+  })
+
+  it('should count punctuation as characters', () => {
+    const analyzer = new TextAnalyzer('Hello!')
+    const result = analyzer.getCharacterCount()
+    expect(result).toBe(6)
+  })
+
+  it('should count numbers as characters', () => {
+    const analyzer = new TextAnalyzer('Hello 123')
+    const result = analyzer.getCharacterCount()
+    expect(result).toBe(9)
+  })
+
+  it('should return zero for an empty text', () => {
+    const analyzer = new TextAnalyzer('')
+    const result = analyzer.getCharacterCount()
+    expect(result).toBe(0)
+  })
+})
