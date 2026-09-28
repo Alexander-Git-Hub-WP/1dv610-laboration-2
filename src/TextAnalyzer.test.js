@@ -123,29 +123,35 @@ describe('getLowercaseCount()', () => {
   })
 })
 
-describe('getLongestWord()', () => {
-  it('should return the longest word', () => {
+describe('getLongestWords()', () => {
+  it('should return the longest words', () => {
     const analyzer = new TextAnalyzer('Hello my beautiful world')
-    const result = analyzer.getLongestWord()
-    expect(result).toBe('beautiful')
+    const result = analyzer.getLongestWords()
+    expect(result).toEqual(['beautiful'])
   })
 
-  it('should return the longest word regardless of its position', () => {
+  it('should return the longest words regardless of their position', () => {
     const analyzer = new TextAnalyzer('Beautiful is the longest')
-    const result = analyzer.getLongestWord()
-    expect(result).toBe('Beautiful')
+    const result = analyzer.getLongestWords()
+    expect(result).toEqual(['Beautiful'])
   })
 
-  it('should ignore punctuation when determining the longest word', () => {
-    const analyzer = new TextAnalyzer('Hello beautiful! World.')
-    const result = analyzer.getLongestWord()
-    expect(result).toBe('beautiful')
+  it('should ignore punctuation when determining the longest words', () => {
+    const analyzer = new TextAnalyzer('Hello dude!')
+    const result = analyzer.getLongestWords()
+    expect(result).toEqual(['Hello'])
   })
 
-  it('should count Swedish letters as part of a word', () => {
+  it('should return all words with the longest length', () => {
+    const analyzer = new TextAnalyzer('Hello my cute world!')
+    const result = analyzer.getLongestWords()
+    expect(result).toEqual(['Hello', 'world'])
+  })
+
+  it('should treat Swedish letters as part of a word', () => {
     const analyzer = new TextAnalyzer('Trädgårdsböcker är roliga att läsa')
-    const result = analyzer.getLongestWord()
-    expect(result).toBe('Trädgårdsböcker')
+    const result = analyzer.getLongestWords()
+    expect(result).toEqual(['Trädgårdsböcker'])
   })
 })
 
