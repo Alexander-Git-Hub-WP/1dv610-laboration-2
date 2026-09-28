@@ -141,19 +141,20 @@ export class TextAnalyzer {
   /**
    * Gets the average length of all words in the text.
    * The result is rounded to the nearest whole number.
+   * 
+   * Words consist of one or more letters. Non-letter characters
+   * are treated as word separators.
    *
    * @returns {number} The rounded average word length
    */
   getAverageWordLength() {
-    const words = this.#text.split(/\s+/)
+    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
     const wordCount = this.getWordCount()
 
     let totalWordLength = 0
 
     for (const word of words) {
-      if (word !== '') {
         totalWordLength += word.length
-      }
     }
 
     return Math.round(totalWordLength / wordCount)
