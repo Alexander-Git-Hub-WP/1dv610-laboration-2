@@ -386,7 +386,7 @@ describe('getMostCommonWord()', () => {
     expect(result).toBe('hello')
   })
 
-  it('should treat words with different casing as different words', () => {
+  it('should treat words with different casing as same word', () => {
     const analyzer = new TextAnalyzer('Hello hello HELLO')
     const result = analyzer.getMostCommonWord()
     expect(result).toBe('hello')
