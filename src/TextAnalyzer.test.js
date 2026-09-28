@@ -169,9 +169,9 @@ describe('getShortestWords()', () => {
   })
 
   it('should ignore punctuation when determining the shortest words', () => {
-    const analyzer = new TextAnalyzer('Hello beautiful!')
+    const analyzer = new TextAnalyzer('Hello dude!')
     const result = analyzer.getShortestWords()
-    expect(result).toEqual(['Hello'])
+    expect(result).toEqual(['dude'])
   })
 
   it('should return all words with the shortest length', () => {
