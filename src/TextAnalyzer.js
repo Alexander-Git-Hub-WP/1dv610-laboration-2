@@ -222,8 +222,7 @@ export class TextAnalyzer {
    * Gets the most common word in the text.
    * 
    * Words consist of one or more letters. Non-letter characters
-   * are treated as word separators. Words with different casing
-   * are treated as different words.
+   * are treated as word separators. Words are compared case-insensitively.
    *
    * @returns {string} The most common word in the text.
    */
@@ -232,10 +231,12 @@ export class TextAnalyzer {
     const wordCounts = {}
 
     for (const word of words) {
-      if (wordCounts[word]) {
-        wordCounts[word]++
+      const normalizedWord = word.toLowerCase()
+
+      if (wordCounts[normalizedWord]) {
+        wordCounts[normalizedWord]++
       } else {
-        wordCounts[word] = 1
+        wordCounts[normalizedWord] = 1
       }
     }
 
