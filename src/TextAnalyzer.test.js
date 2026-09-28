@@ -70,3 +70,29 @@ describe('getSentenceCount()', () => {
     expect(result).toBe(0)
   })
 })
+
+describe('getUppercaseCount()', () => {
+  it('should count uppercase letters', () => {
+    const analyzer = new TextAnalyzer('Hello WORLD')
+    const result = analyzer.getUppercaseCount()
+    expect(result).toBe(6)
+  })
+
+  it('should return zero when the text contains no uppercase letters', () => {
+    const analyzer = new TextAnalyzer('hello world')
+    const result = analyzer.getUppercaseCount()
+    expect(result).toBe(0)
+  })
+
+  it('should count Swedish uppercase letters', () => {
+    const analyzer = new TextAnalyzer('ÅÄÖ')
+    const result = analyzer.getUppercaseCount()
+    expect(result).toBe(3)
+  })
+
+  it('should not count numbers, spaces or punctuation as uppercase letters', () => {
+    const analyzer = new TextAnalyzer('Hello 123!?')
+    const result = analyzer.getUppercaseCount()
+    expect(result).toBe(1)
+  })
+})
