@@ -85,7 +85,7 @@ describe('getUppercaseCount()', () => {
   })
 
   it('should count Swedish uppercase letters', () => {
-    const analyzer = new TextAnalyzer('ÅÄÖ')
+    const analyzer = new TextAnalyzer('åäöÅÄÖ')
     const result = analyzer.getUppercaseCount()
     expect(result).toBe(3)
   })
@@ -94,5 +94,31 @@ describe('getUppercaseCount()', () => {
     const analyzer = new TextAnalyzer('Hello 123!?')
     const result = analyzer.getUppercaseCount()
     expect(result).toBe(1)
+  })
+})
+
+describe('getLowercaseCount()', () => {
+  it('should count lowercase letters', () => {
+    const analyzer = new TextAnalyzer('Hello WORLD')
+    const result = analyzer.getLowercaseCount()
+    expect(result).toBe(4)
+  })
+
+  it('should return zero when the text contains no lowercase letters', () => {
+    const analyzer = new TextAnalyzer('HELLO WORLD')
+    const result = analyzer.getLowercaseCount()
+    expect(result).toBe(0)
+  })
+
+  it('should count Swedish lowercase letters', () => {
+    const analyzer = new TextAnalyzer('åäöÅÄÖ')
+    const result = analyzer.getLowercaseCount()
+    expect(result).toBe(3)
+  })
+
+  it('should not count numbers, spaces or punctuation as lowercase letters', () => {
+    const analyzer = new TextAnalyzer('Hello 123!?')
+    const result = analyzer.getLowercaseCount()
+    expect(result).toBe(4)
   })
 })
