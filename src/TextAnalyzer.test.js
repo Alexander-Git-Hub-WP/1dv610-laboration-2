@@ -308,3 +308,29 @@ describe('getCharacterCountWithoutWhitespace()', () => {
     expect(result).toBe(0)
   })
 })
+
+describe('getNumberCount()', () => {
+  it('should count numeric characters in the text', () => {
+    const analyzer = new TextAnalyzer('There are 3 apples')
+    const result = analyzer.getNumberCount()
+    expect(result).toBe(1)
+  })
+
+  it('should count all numeric characters in the text', () => {
+    const analyzer = new TextAnalyzer('12345')
+    const result = analyzer.getNumberCount()
+    expect(result).toBe(5)
+  })
+
+  it('should count numbers mixed with letters and punctuation', () => {
+    const analyzer = new TextAnalyzer('Hello 123!')
+    const result = analyzer.getNumberCount()
+    expect(result).toBe(3)
+  })
+
+  it('should return zero when the text contains no numbers', () => {
+    const analyzer = new TextAnalyzer('Hello world!')
+    const result = analyzer.getNumberCount()
+    expect(result).toBe(0)
+  })
+})
