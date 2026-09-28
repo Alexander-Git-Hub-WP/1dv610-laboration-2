@@ -108,26 +108,35 @@ export class TextAnalyzer {
   }
 
   /**
-   * Gets the shortest word in the text.
+   * Gets the shortest words in the text.
    * 
    * Words consist of one or more letters. Non-letters characters
    * are treated as word separators.
    *
-   * @returns {string} The shortest word in the text.
+   * @returns {string[]} The shortest words in the text.
    */
-  getShortestWord() {
+  getShortestWords() {
     const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
 
-    let shortestWord = words[0]
+    if (words.length === 0) {
+      return []
+    }
+
+    let shortestLength = words[0].length
+    const shortestWords = []
 
     for (const word of words) {
-      if (word.length < shortestWord.length) {
-        shortestWord = word
-      }
+      if (word.length < shortestLength) {
+        shortestLength = word.length
+        shortestWords.length = 0
+        shortestWords.push(word)
+        } else if (word.length === shortestLength) {
+        shortestWords.push(word)
+        }
     }
 
-    return shortestWord
-    }
+    return shortestWords
+  }
   
   /**
    * Gets the average length of all words in the text.
