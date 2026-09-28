@@ -149,3 +149,34 @@ describe('getLongestWord()', () => {
   })
 })
 
+describe('getShortestWords()', () => {
+  it('should return the shortest words', () => {
+    const analyzer = new TextAnalyzer('Hello my beautiful world')
+    const result = analyzer.getShortestWords()
+    expect(result).toEqual(['my'])
+  })
+
+  it('should return the shortest words regardless of their position', () => {
+    const analyzer = new TextAnalyzer('It will make you happy!')
+    const result = analyzer.getShortestWords()
+    expect(result).toEqual(['It'])
+  })
+
+  it('should ignore punctuation when determining the shortest words', () => {
+    const analyzer = new TextAnalyzer('Hello beautiful!')
+    const result = analyzer.getShortestWords()
+    expect(result).toEqual(['Hello'])
+  })
+
+  it('should return all words with the shortest length', () => {
+    const analyzer = new TextAnalyzer('Hello beautiful world!')
+    const result = analyzer.getShortestWords()
+    expect(result).toEqual(['Hello', 'world'])
+  })
+
+  it('should treat Swedish letters as part of a word', () => {
+    const analyzer = new TextAnalyzer('Trädgårdsböcker är roliga att läsa')
+    const result = analyzer.getShortestWords()
+    expect(result).toEqual(['är'])
+  })
+})
