@@ -219,3 +219,35 @@ describe('getAverageWordLength()', () => {
   })
 })
 
+describe('getAverageWordsPerSentence()', () => {
+  it('should return the average number of words per sentence', () => {
+    const analyzer = new TextAnalyzer('Hello world. How are you?')
+    const result = analyzer.getAverageWordsPerSentence()
+    expect(result).toBe(3)
+  })
+
+  it('should calculate the average across sentences with different lengths', () => {
+    const analyzer = new TextAnalyzer('Hello. How are you?')
+    const result = analyzer.getAverageWordsPerSentence()
+    expect(result).toBe(2)
+  })
+
+  it('should round the average number of words to the nearest whole number', () => {
+    const analyzer = new TextAnalyzer('Hello. How are you today?')
+    const result = analyzer.getAverageWordsPerSentence()
+    expect(result).toBe(3)
+  })
+
+  it('should ignore punctuation when counting words', () => {
+    const analyzer = new TextAnalyzer('Hello! World.')
+    const result = analyzer.getAverageWordsPerSentence()
+    expect(result).toBe(1)
+  })
+
+  it('should treat Swedish letters as part of words', () => {
+    const analyzer = new TextAnalyzer('Är du här? Ja, det är jag.')
+    const result = analyzer.getAverageWordsPerSentence()
+    expect(result).toBe(4)
+  })
+})
+
