@@ -109,11 +109,14 @@ export class TextAnalyzer {
 
   /**
    * Gets the shortest word in the text.
+   * 
+   * Words consist of one or more letters. Non-letters characters
+   * are treated as word separators.
    *
    * @returns {string} The shortest word in the text.
    */
   getShortestWord() {
-    const words = this.#text.split(/\s+/)
+    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
 
     let shortestWord = words[0]
 
