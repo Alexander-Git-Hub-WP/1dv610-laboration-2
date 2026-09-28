@@ -122,3 +122,30 @@ describe('getLowercaseCount()', () => {
     expect(result).toBe(4)
   })
 })
+
+describe('getLongestWord()', () => {
+  it('should return the longest word', () => {
+    const analyzer = new TextAnalyzer('Hello my beautiful world')
+    const result = analyzer.getLongestWord()
+    expect(result).toBe('beautiful')
+  })
+
+  it('should return the longest word regardless of its position', () => {
+    const analyzer = new TextAnalyzer('Beautiful is the longest')
+    const result = analyzer.getLongestWord()
+    expect(result).toBe('Beautiful')
+  })
+
+  it('should ignore punctuation when determining the longest word', () => {
+    const analyzer = new TextAnalyzer('Hello beautiful! World.')
+    const result = analyzer.getLongestWord()
+    expect(result).toBe('beautiful')
+  })
+
+  it('should count Swedish letters as part of a word', () => {
+    const analyzer = new TextAnalyzer('Hej världen')
+    const result = analyzer.getLongestWord()
+    expect(result).toBe('världen')
+  })
+})
+
