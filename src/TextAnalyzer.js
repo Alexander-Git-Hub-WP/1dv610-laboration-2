@@ -23,23 +23,15 @@ export class TextAnalyzer {
   /**
    * Counts the number of words in the text.
    *
-   * Words are separated by one or more whitespace characters,
-   * such as spaces, tabs or line breaks.
+   * Words consist of one or more letters. Non-letter characters
+   * are treated as word separators.
    *
    * @returns {number} The number of words in the text.
    */
   getWordCount() {
-    const words = this.#text.split(/\s+/)
+    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
 
-    let wordCount = 0
-
-    for (const word of words) {
-      if (word !== '') {
-        wordCount++
-      }
-    }
-
-    return wordCount
+    return words.length
   }
 
   /**
