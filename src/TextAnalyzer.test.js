@@ -186,3 +186,36 @@ describe('getShortestWords()', () => {
     expect(result).toEqual(['är'])
   })
 })
+
+describe('getAverageWordLength()', () => {
+  it('should return the average word length', () => {
+    const analyzer = new TextAnalyzer('Hello world')
+    const result = analyzer.getAverageWordLength()
+    expect(result).toBe(5)
+  })
+
+  it('should calculate the average length regardless of word position', () => {
+    const analyzer = new TextAnalyzer('Beautiful is fun')
+    const result = analyzer.getAverageWordLength()
+    expect(result).toBe(5)
+  })
+
+  it('should ignore punctuation when calculating the average word length', () => {
+    const analyzer = new TextAnalyzer('Hi dude!')
+    const result = analyzer.getAverageWordLength()
+    expect(result).toBe(3)
+  })
+
+  it('should round the average word length to the nearest whole number', () => {
+    const analyzer = new TextAnalyzer('Hi world')
+    const result = analyzer.getAverageWordLength()
+    expect(result).toBe(4)
+  })
+
+  it('should count Swedish letters as part of a word', () => {
+    const analyzer = new TextAnalyzer('Träd är kul')
+    const result = analyzer.getAverageWordLength()
+    expect(result).toBe(3)
+  })
+})
+
