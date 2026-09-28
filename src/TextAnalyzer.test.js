@@ -143,9 +143,9 @@ describe('getLongestWord()', () => {
   })
 
   it('should count Swedish letters as part of a word', () => {
-    const analyzer = new TextAnalyzer('Hej världen')
+    const analyzer = new TextAnalyzer('Trädgårdsböcker är roliga att läsa')
     const result = analyzer.getLongestWord()
-    expect(result).toBe('världen')
+    expect(result).toBe('Trädgårdsböcker')
   })
 })
 
