@@ -86,25 +86,33 @@ export class TextAnalyzer {
   }
 
   /**
-   * Gets the longest word in the text.
+   * Gets the longest words in the text.
    * 
    * Words consist of one or more letters. Non-letters characters
    * are treated as word separators.
    *
-   * @returns {string} The longest word in the text.
+   * @returns {string[]} The longest words in the text.
    */
-  getLongestWord() {
+  getLongestWords() {
     const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    if (words.length === 0) {
+      return []
+    }
 
-    let longestWord = words[0]
+    let longestLength = words[0].length
+    const longestWords = []
 
     for (const word of words) {
-      if (word.length > longestWord.length) {
-        longestWord = word
+      if (word.length > longestLength) {
+        longestLength = word.length
+        longestWords.length = 0
+        longestWords.push(word)
+      } else if (word.length === longestLength) {
+        longestWords.push(word)
       }
     }
 
-    return longestWord
+    return longestWords
   }
 
   /**
