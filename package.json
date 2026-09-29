@@ -1,11 +1,11 @@
 {
-  "name": "js-cli-template",
+  "name": "text-analyzer",
   "version": "1.0.0",
-  "description": "1DV610 - JavaScript CLI Template / Boilerplate",
+  "description": "A JavaScript module for analyzing text and retrieving statistics about its contents.",
   "type": "module",
   "main": "src/app.js",
   "bin": {
-    "js-cli-template": "src/app.js"
+    "text-analyzer": "src/app.js"
   },
   "engines": {
     "node": ">=24.12.0"
@@ -22,7 +22,7 @@
   },
   "contributors": [
     "1dv610 Organization",
-    "YOUR NAME <YOUR EMAIL>"
+    "Alexander Skogberg <as299kz@student.lnu.se>"
   ],
   "license": "Unlicense",
   "private": false,
