@@ -217,6 +217,12 @@ describe('getAverageWordLength()', () => {
     const result = analyzer.getAverageWordLength()
     expect(result).toBe(3)
   })
+
+  it('should return zero when the text contains no words', () => {
+    const analyzer = new TextAnalyzer('')
+    const result = analyzer.getAverageWordLength()
+    expect(result).toBe(0)
+  })
 })
 
 describe('getAverageWordsPerSentence()', () => {
@@ -249,6 +255,13 @@ describe('getAverageWordsPerSentence()', () => {
     const result = analyzer.getAverageWordsPerSentence()
     expect(result).toBe(4)
   })
+
+  it('should return zero when the text contains no sentences', () => {
+    const analyzer = new TextAnalyzer('')
+    const result = analyzer.getAverageWordsPerSentence()
+    expect(result).toBe(0)
+  })
+
 })
 
 describe('getCharacterCount()', () => {
