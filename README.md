@@ -157,8 +157,8 @@ Words are compared case-insensitively when calculating the most common words.
 
 ```text
 ├── src/
-│   ├── app.js                # Main application logic & execution entry point
-│   ├── app.test.js           # Unit tests for closely coupled application logic
+│   ├── app.js                # Command-line interface for using TextAnalyzer
+│   ├── app.test.js           # Unit tests for the command-line application
 │   ├── TextAnalyzer.js       # Reusable TextAnalyzer module
 │   └── TextAnalyzer.test.js  # Unit tests for TextAnalyzer
 ├── TEST_REPORT.md            # Test report
