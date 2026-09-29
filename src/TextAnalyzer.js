@@ -130,7 +130,7 @@ export class TextAnalyzer {
         shortestLength = word.length
         shortestWords.length = 0
         shortestWords.push(word)
-        } else if (word.length === shortestLength) {
+      } else if (word.length === shortestLength) {
         shortestWords.push(word)
         }
     }
