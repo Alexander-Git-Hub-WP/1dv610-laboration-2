@@ -52,7 +52,7 @@ You can manage the application, testing, and formatting using the following npm 
 
 ### Running the Application
 
-Starts the main console application entry point (src/app.js), without a text argument:
+Starts the command-line application entry point (src/app.js), without a text argument:
 
 ```bash
 npm start
