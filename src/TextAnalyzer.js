@@ -151,6 +151,10 @@ export class TextAnalyzer {
     const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
     const wordCount = this.getWordCount()
 
+    if (wordCount === 0) {
+      return 0
+    }
+
     let totalWordLength = 0
 
     for (const word of words) {
@@ -169,6 +173,10 @@ export class TextAnalyzer {
   getAverageWordsPerSentence() {
     const wordCount = this.getWordCount()
     const sentenceCount = this.getSentenceCount()
+
+    if (sentenceCount === 0) {
+      return 0
+    }
 
     return Math.round(wordCount / sentenceCount)
   }
