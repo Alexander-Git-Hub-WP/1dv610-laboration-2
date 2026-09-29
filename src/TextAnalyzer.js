@@ -219,14 +219,14 @@ export class TextAnalyzer {
   }
 
   /**
-   * Gets the most common word in the text.
+   * Gets the most common words in the text.
    * 
    * Words consist of one or more letters. Non-letter characters
    * are treated as word separators. Words are compared case-insensitively.
    *
-   * @returns {string} The most common word in the text.
+   * @returns {string[]} The most common words in the text.
    */
-  getMostCommonWord() {
+  getMostCommonWords() {
     const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
     const wordCounts = {}
 
@@ -240,17 +240,20 @@ export class TextAnalyzer {
       }
     }
 
-    let mostCommonWord = ''
     let highestCount = 0
+    const mostCommonWords = []
 
     for (const word in wordCounts) {
       if (wordCounts[word] > highestCount) {
         highestCount = wordCounts[word]
-        mostCommonWord = word
+        mostCommonWords.length = 0
+        mostCommonWords.push(word)
+      } else if (wordCounts[word] === highestCount) {
+        mostCommonWords.push(word)
       }
     }
 
-    return mostCommonWord
+    return mostCommonWords
   }
 
 }
