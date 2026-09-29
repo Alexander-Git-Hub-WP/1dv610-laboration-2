@@ -6,7 +6,7 @@ import { TextAnalyzer } from './TextAnalyzer.js'
  * Extracts the text argument from the command line.
  *
  * @example
- * parseArgs(['Ada Lovelace']) // Returns 'Ada Lovelace'
+ * parseArgs(['Hello world']) // Returns 'Hello world'
  * parseArgs([]) // Returns undefined
  * @param {string[]} argv - Command-line arguments, excluding the node
  *   executable and script path (i.e. `process.argv.slice(2)`).
@@ -38,15 +38,15 @@ function main() {
     console.log(`Sentences: ${analyzer.getSentenceCount()}`)
     console.log(`Uppercase: ${analyzer.getUppercaseCount()}`)
     console.log(`Lowercase: ${analyzer.getLowercaseCount()}`)
-    console.log(`Longest word: ${analyzer.getLongestWord()}`)
-    console.log(`Shortest word: ${analyzer.getShortestWord()}`)
+    console.log(`Longest words: ${analyzer.getLongestWords()}`)
+    console.log(`Shortest words: ${analyzer.getShortestWords()}`)
     console.log(`Average word length: ${analyzer.getAverageWordLength()}`)
     console.log(`Average words per sentence: ${analyzer.getAverageWordsPerSentence()}`)
     console.log(`Characters: ${analyzer.getCharacterCount()}`)
     console.log(`Characters without whitespace: ${analyzer.getCharacterCountWithoutWhitespace()}`)
     console.log(`Numbers: ${analyzer.getNumberCount()}`)
     console.log(`Letters: ${analyzer.getLetterCount()}`)
-    console.log(`Most common word: ${analyzer.getMostCommonWord()}`)
+    console.log(`Most common words: ${analyzer.getMostCommonWords()}`)
   } catch (error) {
     console.error(
       'An unexpected error occurred during execution:',
