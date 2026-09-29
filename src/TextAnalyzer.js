@@ -79,7 +79,7 @@ export class TextAnalyzer {
 
   /**
    * Gets the longest words in the text.
-   * 
+   *
    * Words consist of one or more letters. Non-letters characters
    * are treated as word separators.
    *
@@ -109,7 +109,7 @@ export class TextAnalyzer {
 
   /**
    * Gets the shortest words in the text.
-   * 
+   *
    * Words consist of one or more letters. Non-letters characters
    * are treated as word separators.
    *
@@ -132,16 +132,16 @@ export class TextAnalyzer {
         shortestWords.push(word)
       } else if (word.length === shortestLength) {
         shortestWords.push(word)
-        }
+      }
     }
 
     return shortestWords
   }
-  
+
   /**
    * Gets the average length of all words in the text.
    * The result is rounded to the nearest whole number.
-   * 
+   *
    * Words consist of one or more letters. Non-letter characters
    * are treated as word separators.
    *
@@ -158,7 +158,7 @@ export class TextAnalyzer {
     let totalWordLength = 0
 
     for (const word of words) {
-        totalWordLength += word.length
+      totalWordLength += word.length
     }
 
     return Math.round(totalWordLength / wordCount)
@@ -210,7 +210,7 @@ export class TextAnalyzer {
    */
   getNumberCount() {
     const numbers = this.#text.match(/\d/g) || []
-    
+
     return numbers.length
   }
 
@@ -219,7 +219,7 @@ export class TextAnalyzer {
    *
    * @returns {number} The number of letters in the text.
    */
-   getLetterCount() {
+  getLetterCount() {
     const uppercaseCount = this.getUppercaseCount()
     const lowercaseCount = this.getLowercaseCount()
 
@@ -228,7 +228,7 @@ export class TextAnalyzer {
 
   /**
    * Gets the most common words in the text.
-   * 
+   *
    * Words consist of one or more letters. Non-letter characters
    * are treated as word separators. Words are compared case-insensitively.
    *
@@ -263,5 +263,4 @@ export class TextAnalyzer {
 
     return mostCommonWords
   }
-
 }

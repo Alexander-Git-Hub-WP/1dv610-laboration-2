@@ -48,10 +48,7 @@ function main() {
     console.log(`Letters: ${analyzer.getLetterCount()}`)
     console.log(`Most common words: ${analyzer.getMostCommonWords()}`)
   } catch (error) {
-    console.error(
-      'An unexpected error occurred during execution:',
-      error.message
-    )
+    console.error('An unexpected error occurred during execution:', error.message)
 
     process.exitCode = 1
   }

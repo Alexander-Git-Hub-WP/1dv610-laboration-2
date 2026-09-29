@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { TextAnalyzer } from "./TextAnalyzer"
+import { TextAnalyzer } from './TextAnalyzer'
 
 describe('getWordCount()', () => {
   it('should count the number of words', () => {
@@ -261,7 +261,6 @@ describe('getAverageWordsPerSentence()', () => {
     const result = analyzer.getAverageWordsPerSentence()
     expect(result).toBe(0)
   })
-
 })
 
 describe('getCharacterCount()', () => {
