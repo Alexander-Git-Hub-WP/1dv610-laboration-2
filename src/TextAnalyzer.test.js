@@ -382,9 +382,9 @@ describe('getLetterCount()', () => {
 
 describe('getMostCommonWords()', () => {
   it('should return the most common words', () => {
-    const analyzer = new TextAnalyzer('Hello world')
+    const analyzer = new TextAnalyzer('Hello, my name is Ethan and this car is blue')
     const result = analyzer.getMostCommonWords()
-    expect(result).toEqual(['hello', 'world'])
+    expect(result).toEqual(['is'])
   })
 
   it('should return all words with the highest frequency', () => {
