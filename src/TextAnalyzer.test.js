@@ -367,40 +367,46 @@ describe('getLetterCount()', () => {
   })
 })
 
-describe('getMostCommonWord()', () => {
-  it('should return the most common word', () => {
+describe('getMostCommonWords()', () => {
+  it('should return the most common words', () => {
     const analyzer = new TextAnalyzer('Hello world')
-    const result = analyzer.getMostCommonWord()
-    expect(result).toBe('hello')
+    const result = analyzer.getMostCommonWords()
+    expect(result).toEqual(['hello', 'world'])
   })
 
-  it('should find the most common word regardless of its position', () => {
+  it('should return all words with the highest frequency', () => {
+    const analyzer = new TextAnalyzer('Hello world, hello world')
+    const result = analyzer.getMostCommonWords()
+    expect(result).toEqual(['hello', 'world'])
+  })
+
+  it('should find the most common words regardless of their position', () => {
     const analyzer = new TextAnalyzer('World hello world')
-    const result = analyzer.getMostCommonWord()
-    expect(result).toBe('world')
+    const result = analyzer.getMostCommonWords()
+    expect(result).toEqual(['world'])
   })
 
   it('should ignore punctuation when counting words', () => {
     const analyzer = new TextAnalyzer('Hello! Hello, world.')
-    const result = analyzer.getMostCommonWord()
-    expect(result).toBe('hello')
+    const result = analyzer.getMostCommonWords()
+    expect(result).toEqual(['hello'])
   })
 
   it('should treat words with different casing as same word', () => {
     const analyzer = new TextAnalyzer('Hello hello HELLO')
-    const result = analyzer.getMostCommonWord()
-    expect(result).toBe('hello')
+    const result = analyzer.getMostCommonWords()
+    expect(result).toEqual(['hello'])
   })
 
   it('should treat Swedish letters as part of a word', () => {
     const analyzer = new TextAnalyzer('färger färger blå blå färger')
-    const result = analyzer.getMostCommonWord()
-    expect(result).toBe('färger')
+    const result = analyzer.getMostCommonWords()
+    expect(result).toEqual(['färger'])
   })
 
-  it('should return an empty string when the text contains no words', () => {
+  it('should return an empty array when the text contains no words', () => {
     const analyzer = new TextAnalyzer('123 !?')
-    const result = analyzer.getMostCommonWord()
-    expect(result).toBe('')
+    const result = analyzer.getMostCommonWords()
+    expect(result).toEqual([])
   })
 })
