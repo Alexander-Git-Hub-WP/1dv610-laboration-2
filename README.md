@@ -1,13 +1,23 @@
-# JavaScript CLI Template
+# TextAnalyzer
 
-Welcome to the **1dv610** JavaScript Command-Line Interface (CLI) template. This repository serves as a clean, pre-configured boilerplate for building robust Node.js console applications with modern tools and best practices.
+Welcome to Text Analyzer, a JavaScript module for analyzing text and retrieving statistics about its contents.
+
+The module provides a reusable TextAnalyzer class that can be used by other programmers to analyze words, sentences, characters, letters, numbers and word frequency in a text.
 
 ## 🚀 Features
 
+- **Text analysis:** Analyze text and retrieve different statistics about its contents.
+- **Word analysis:** Count words and find the longest and shortest words.
+- **Sentence analysis:** Count sentences and calculate the average number of words per sentence.
+- **Character analysis:** Count characters, letters, numbers and whitespace.
+- **Word statistics:** Calculate average word length and find the most common words.
+- **Swedish letter support:** Supports the Swedish letters å, ä and ö.
 - **Modern ECMAScript Modules (ESM):** Full native support for `import`/`export` syntax.
-- **Unit Testing:** Pre-configured with [Vitest](https://vitest.dev) for blazing-fast test execution.
+- **Unit Testing:** Pre-configured with [Vitest](https://vitest.dev) for automated unit testing.
 - **Linting & Code Quality:** Strict code analysis using [ESLint](https://eslint.org) integrated with custom `@lnu/eslint-config` rules.
 - **Code Formatting:** Automatic code style management via [Prettier](https://prettier.io).
+
+The module focuses on basic text statistics. It does not provide advanced linguistic analysis such as grammar analysis, sentiment analysis or semantic analysis.
 
 ---
 
@@ -17,141 +27,129 @@ Welcome to the **1dv610** JavaScript Command-Line Interface (CLI) template. This
 
 Ensure you have **Node.js** (version 24.12.0 or later) and **Git** installed on your machine.
 
-### Installation & Project Setup
+### Installation
 
-Pick the flow that matches your situation.
-
-#### A. Starting from scratch (no repository yet) — recommended
-
-Use GitHub's built-in template flow — no git commands needed to get a clean, single-commit history:
-
-1. On GitHub, open this template repository and click **Use this template → Create a new repository**.
-2. Clone your new repository and move into it:
+1. Clone the repository and move into your repository directory:
 
    ```bash
-   git clone <your-newly-created-repository-url>
-   cd <your-repository-name>
+   git clone https://github.com/Alexander-Git-Hub-WP/1dv610-laboration-2.git
+   cd 1dv610-laboration-2
    ```
 
-3. Install dependencies:
+2. Install dependencies:
 
    ```bash
    npm install
    ```
 
-GitHub gives your new repository its own single commit copied from this template — no shared history, nothing to merge or squash.
-
-> **Note:** This requires the template repository to have **Template repository** enabled under its GitHub Settings → General. If the "Use this template" button isn't available, use flow B instead.
-
-#### B. Importing into an existing repository (empty or not)
-
-Use this flow if you already have a repository — e.g. one provisioned by GitHub Classroom — that you can't or don't want to recreate from a template.
-
-1. Clone your existing repository and move into it:
-
-   ```bash
-   git clone <your-existing-repository-url>
-   cd <your-repository-name>
-   ```
-
-2. If the repository has no commits yet, create an empty initial commit:
-
-   ```bash
-   git commit --allow-empty -m "Initial commit"
-   ```
-
-   _Note: This step is required for a genuinely empty repository. A branch with zero commits has nothing for `--squash` to diff against, so `git pull --squash` silently falls back to a plain fast-forward — it imports this template's entire internal commit history unmodified instead of collapsing it into one clean commit. An empty commit gives `--squash` a (empty) tree to compare against, so it behaves as intended. Skip this step if the repository already has commits (e.g. an auto-generated README)._
-
-3. **Pull and squash the boilerplate code** from this template repository into your branch:
-
-   ```bash
-   git pull git@github.com:1dv610/js-cli-template.git main --squash --allow-unrelated-histories
-   ```
-
-   _Note: Using `--squash` ensures that the boilerplate's internal development history is collapsed into a single, clean starting point in your repository. If your repository already had files (e.g. GitHub auto-created a README or `.gitignore`), this will report a conflict on those files — resolve it by taking the template's version: `git checkout --theirs <file> && git add <file>`._
-
-4. **Commit the imported files** to finalize the import of the boilerplate:
-
-   ```bash
-   git commit -m "Initial commit from boilerplate"
-   ```
-
-5. **Install the project dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-6. **Push the clean boilerplate setup** up to your own GitHub repository:
-   ```bash
-   git push origin main
-   ```
+The external dependencies are used for development, testing, linting and formatting. The TextAnalyzer module itself does not require an external library to perform its text analysis.
 
 ---
 
 ## 💻 Available Scripts
 
-You can manage the application lifecycle, testing, and formatting using the following npm scripts:
+You can manage the application, testing, and formatting using the following npm scripts:
 
 ### Running the Application
 
-Starts the main console application entry point (`src/app.js`), optionally passing a name as the first argument:
+Starts the main console application entry point (src/app.js), without a text argument:
 
 ```bash
 npm start
-npm start -- "Ada Lovelace"
 ```
 
-The `bin` entry in `package.json` also makes the app runnable as a standalone command once linked (`npm link`) or installed:
+To analyze a specific text, provide the text as a command-line argument:
 
 ```bash
-js-cli-template "Ada Lovelace"
+npm start -- 'Hello world'
 ```
 
-_Note: Rename the `js-cli-template` key in `package.json`'s `bin` field (and the `name` field) to match your own project when adapting this template._
+The application prints the statistics calculated by TextAnalyzer.
+
+- Note: Depending on the terminal environment, single quotes (') may be required around the text argument instead of double quotes (").
 
 ### Running Tests
 
-- **Interactive Watch Mode (Recommended for development):**
+- Interactive Watch Mode (Recommended for development):
   ```bash
   npm test
   ```
-- **Single Execution Run:**
+
+- Single Execution Run:
   ```bash
   npm run test:run
   ```
-- **Run Specific Tests (by matching name patterns):**
+
+- Run Specific Tests (by matching name patterns):
   ```bash
   npm run test:match -- <test-name-pattern>
   ```
 
-### Code Linting
+###  Code Linting
 
-Analyze the source code in `src/` for errors, syntax issues, and anti-patterns:
+- Analyze the source code in `src/` for errors, syntax issues, and anti-patterns:
+  ```bash
+  npm run lint
+  ```
 
-```bash
-npm run lint
-```
-
-Automatically fix fixable linting issues:
-
-```bash
-npm run lint:fix
-```
+- Automatically fix fixable linting issues:
+  ```bash
+  npm run lint:fix
+  ```
 
 ### Formatting
 
-Check if files comply with Prettier styling rules:
+- Check if files comply with Prettier styling rules:
+  ```bash
+  npm run format:check
+  ```
 
-```bash
-npm run format:check
+- Automatically reformat all source files:
+  ```bash
+  npm run format
+  ```
+
+---
+
+## 🧩 Using TextAnalyzer
+
+The main reusable part of the project is the TextAnalyzer class.
+Import the class into your JavaScript application:
+
+```javascript
+import { TextAnalyzer } from './src/TextAnalyzer.js'
+
+const analyzer = new TextAnalyzer('Hello world! How are you?')
+
+console.log(analyzer.getWordCount())
+console.log(analyzer.getSentenceCount())
+console.log(analyzer.getLongestWords())
+console.log(analyzer.getShortestWords())
+console.log(analyzer.getMostCommonWords())
 ```
 
-Automatically reformat all source files:
+---
 
-```bash
-npm run format
-```
+## 📚 Available Methods
+
+| Method | Description |
+|---|---|
+| `getWordCount()` | Counts the number of words in the text. |
+| `getSentenceCount()` | Counts the number of sentences in the text. |
+| `getUppercaseCount()` | Counts uppercase letters. |
+| `getLowercaseCount()` | Counts lowercase letters. |
+| `getLongestWords()` | Returns all words with the longest length. |
+| `getShortestWords()` | Returns all words with the shortest length. |
+| `getAverageWordLength()` | Returns the rounded average word length. |
+| `getAverageWordsPerSentence()` | Returns the rounded average number of words per sentence. |
+| `getCharacterCount()` | Counts all characters, including whitespace. |
+| `getCharacterCountWithoutWhitespace()` | Counts all characters except whitespace. |
+| `getNumberCount()` | Counts numeric characters. |
+| `getLetterCount()` | Counts all letters. |
+| `getMostCommonWords()` | Returns all words with the highest frequency. |
+
+Words consist of one or more letters. Non-letter characters are treated as word separators. Swedish letters å, ä and ö are supported.
+Words are compared case-insensitively when calculating the most common words.
 
 ---
 
@@ -159,12 +157,38 @@ npm run format
 
 ```text
 ├── src/
-│   ├── app.js       # Main application logic & execution entry point
-│   └── app.test.js  # Unit tests for closely coupled application logic
-├── test/            # Integration and system tests (higher-level / E2E test flows)
-├── package.json     # Project configuration, scripts, and dependencies
-└── LICENSE          # Unlicense (Public Domain dedication)
+│   ├── app.js                # Main application logic & execution entry point
+│   ├── app.test.js           # Unit tests for closely coupled application logic
+│   ├── TextAnalyzer.js       # Reusable TextAnalyzer module
+│   └── TextAnalyzer.test.js  # Unit tests for TextAnalyzer
+├── TEST_REPORT.md            # Test report
+├── package.json              # Project configuration, scripts, and dependencies
+└── LICENSE                   # Unlicense (Public Domain dedication)
 ```
+
+The TextAnalyzer.js file contains the reusable module intended for other programmers.
+The app.js file is a separate test application used to manually run and inspect the module.
+
+---
+
+## 🧪 Testing
+
+The module is tested using automated unit tests with Vitest.
+The test suite covers the public methods of TextAnalyzer, including:
+
+- Normal text input
+- Empty text
+- Whitespace and punctuation
+- Uppercase and lowercase letters
+- Swedish letters
+- Numbers
+- Longest and shortest words
+- Average word length
+- Average words per sentence
+- Most common words
+
+The command-line argument parser in app.js is tested separately in app.test.js.
+The detailed testing process and results are documented in TEST_REPORT.md.
 
 ---
 
