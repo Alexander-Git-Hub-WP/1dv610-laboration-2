@@ -20,7 +20,6 @@ export class TextAnalyzer {
     this.#text = text
   }
 
-
   /**
    * Extracts words from the text.
    * 
@@ -90,9 +89,6 @@ export class TextAnalyzer {
   /**
    * Gets the longest words in the text.
    *
-   * Words consist of one or more letters. Non-letters characters
-   * are treated as word separators.
-   *
    * @returns {string[]} The longest words in the text.
    */
   getLongestWords() {
@@ -119,9 +115,6 @@ export class TextAnalyzer {
 
   /**
    * Gets the shortest words in the text.
-   *
-   * Words consist of one or more letters. Non-letters characters
-   * are treated as word separators.
    *
    * @returns {string[]} The shortest words in the text.
    */
@@ -152,16 +145,12 @@ export class TextAnalyzer {
    * Gets the average length of all words in the text.
    * The result is rounded to the nearest whole number.
    *
-   * Words consist of one or more letters. Non-letter characters
-   * are treated as word separators.
-   *
    * @returns {number} The rounded average word length
    */
   getAverageWordLength() {
     const words = this.getWords()
-    const wordCount = this.getWordCount()
 
-    if (wordCount === 0) {
+    if (words.length === 0) {
       return 0
     }
 
@@ -171,7 +160,7 @@ export class TextAnalyzer {
       totalWordLength += word.length
     }
 
-    return Math.round(totalWordLength / wordCount)
+    return Math.round(totalWordLength / words.length)
   }
 
   /**
