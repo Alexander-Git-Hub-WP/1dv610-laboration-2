@@ -22,6 +22,8 @@ export class TextAnalyzer {
 
 
   /**
+   * Extracts words from the text.
+   * 
    * Words consist of one or more letters in the Swedish alphabet. 
    * All other characters are treated as word separators.
    *
@@ -33,9 +35,6 @@ export class TextAnalyzer {
 
   /**
    * Counts the number of words in the text.
-   *
-   * Words consist of one or more letters. Non-letter characters
-   * are treated as word separators.
    *
    * @returns {number} The number of words in the text.
    */
