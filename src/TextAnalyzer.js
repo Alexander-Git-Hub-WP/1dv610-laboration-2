@@ -20,6 +20,17 @@ export class TextAnalyzer {
     this.#text = text
   }
 
+
+  /**
+   * Words consist of one or more letters in the Swedish alphabet. 
+   * All other characters are treated as word separators.
+   *
+   * @returns {string[]} The words in the text.
+   */
+  getWords() {
+    return this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+  }
+
   /**
    * Counts the number of words in the text.
    *
@@ -29,7 +40,7 @@ export class TextAnalyzer {
    * @returns {number} The number of words in the text.
    */
   getWordCount() {
-    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    const words = this.getWords()
 
     return words.length
   }
@@ -86,7 +97,7 @@ export class TextAnalyzer {
    * @returns {string[]} The longest words in the text.
    */
   getLongestWords() {
-    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    const words = this.getWords()
     if (words.length === 0) {
       return []
     }
@@ -116,7 +127,7 @@ export class TextAnalyzer {
    * @returns {string[]} The shortest words in the text.
    */
   getShortestWords() {
-    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    const words = this.getWords()
 
     if (words.length === 0) {
       return []
@@ -148,7 +159,7 @@ export class TextAnalyzer {
    * @returns {number} The rounded average word length
    */
   getAverageWordLength() {
-    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    const words = this.getWords()
     const wordCount = this.getWordCount()
 
     if (wordCount === 0) {
@@ -209,7 +220,7 @@ export class TextAnalyzer {
    * @returns {number} The number of numeric characters in the text.
    */
   getNumberCount() {
-    const numbers = this.#text.match(/\d/g) || []
+    const numbers = this.getWords()
 
     return numbers.length
   }
@@ -235,7 +246,7 @@ export class TextAnalyzer {
    * @returns {string[]} The most common words in the text.
    */
   getMostCommonWords() {
-    const words = this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    const words = this.getWords()
     const wordCounts = {}
 
     for (const word of words) {
