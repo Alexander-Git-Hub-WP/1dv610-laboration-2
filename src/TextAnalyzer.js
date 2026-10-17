@@ -23,9 +23,6 @@ export class TextAnalyzer {
   /**
    * Extracts words from the text.
    * 
-   * Words consist of one or more letters in the Swedish alphabet. 
-   * All other characters are treated as word separators.
-   *
    * @returns {string[]} The words in the text.
    */
   getWords() {
@@ -208,7 +205,7 @@ export class TextAnalyzer {
    * @returns {number} The number of numeric characters in the text.
    */
   getNumberCount() {
-    const numbers = this.getWords()
+    const numbers = this.#text.match(/\d/g) || []
 
     return numbers.length
   }
