@@ -22,7 +22,7 @@ export class TextAnalyzer {
 
   /**
    * Extracts words from the text.
-   * 
+   *
    * @returns {string[]} The words in the text.
    */
   getWords() {
