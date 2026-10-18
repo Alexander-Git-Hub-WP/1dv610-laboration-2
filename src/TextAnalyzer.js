@@ -1,7 +1,8 @@
 /**
  * Analyzes a text and provides statistics about its contents.
  *
- * TextAnalyzer can be used to count words.
+ * TextAnalyzer can be used to count words, sentences, characters and letters,
+ * and to calculate word length statistics.
  *
  * @example
  * const analyzer = new TextAnalyzer('Hello world!')
@@ -22,6 +23,9 @@ export class TextAnalyzer {
 
   /**
    * Extracts words from the text.
+   * 
+   * Words consist of one or more letters from the Swedish alphabet.
+   * Characters outside the Swedish alphabet are treated as word separators.
    *
    * @returns {string[]} The words in the text.
    */
@@ -142,7 +146,7 @@ export class TextAnalyzer {
    * Gets the average length of all words in the text.
    * The result is rounded to the nearest whole number.
    *
-   * @returns {number} The rounded average word length
+   * @returns {number} The rounded average word length.
    */
   getAverageWordLength() {
     const words = this.getWords()
@@ -164,7 +168,7 @@ export class TextAnalyzer {
    * Gets the average number of words in each sentence.
    * The result is rounded to the nearest whole number.
    *
-   * @returns {number} The rounded average number of words per sentence
+   * @returns {number} The rounded average number of words per sentence.
    */
   getAverageWordsPerSentence() {
     const wordCount = this.getWordCount()
@@ -226,8 +230,7 @@ export class TextAnalyzer {
   /**
    * Gets the most common words in the text.
    *
-   * Words consist of one or more letters. Non-letter characters
-   * are treated as word separators. Words are compared case-insensitively.
+   * Words are compared case-insensitively and returned in lowercase.
    *
    * @returns {string[]} The most common words in the text.
    */
