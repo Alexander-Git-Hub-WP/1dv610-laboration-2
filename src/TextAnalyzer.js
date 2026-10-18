@@ -118,7 +118,6 @@ export class TextAnalyzer {
    */
   getShortestWords() {
     const words = this.getWords()
-
     if (words.length === 0) {
       return []
     }
@@ -179,10 +178,10 @@ export class TextAnalyzer {
   }
 
   /**
-   * Counts the number of all characters in the text including,
+   * Counts the number of UTF-16 code units in the text including,
    * whitespace characters, such as spaces, tabs or line breaks.
    *
-   * @returns {number} The number of characters in the text.
+   * @returns {number} The number of UTF-16 code units in the text.
    */
   getCharacterCount() {
     return this.#text.length
