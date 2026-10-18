@@ -44,6 +44,7 @@ export class TextAnalyzer {
    * Counts the number of sentences in the text.
    *
    * A sentence ends with a period, exclamation mark or question mark.
+   * Only sentences containing at least one letter from the Swedish alphabet are counted.
    *
    * @returns {number} The number of sentences in the text.
    */
@@ -53,7 +54,7 @@ export class TextAnalyzer {
     let sentenceCount = 0
 
     for (const sentence of sentences) {
-      if (sentence !== '') {
+      if (/[A-ZÅÄÖ]/i.test(sentence)) {
         sentenceCount++
       }
     }
