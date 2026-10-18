@@ -23,7 +23,7 @@ export class TextAnalyzer {
 
   /**
    * Extracts words from the text.
-   * 
+   *
    * Words consist of one or more letters from the Swedish alphabet.
    * Characters outside the Swedish alphabet are treated as word separators.
    *
