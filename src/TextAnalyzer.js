@@ -188,10 +188,11 @@ export class TextAnalyzer {
   }
 
   /**
-   * Counts the number of all characters in the text excluding,
+   * Counts the number of UTF-16 code units in the text excluding,
    * whitespace characters, such as spaces, tabs or line breaks.
    *
-   * @returns {number} The number of characters in the text.
+   * @returns {number} The number of UTF-16 code units in the text,
+   * excluding whitespace characters.
    */
   getCharacterCountWithoutWhitespace() {
     const characters = this.#text.replace(/\s+/g, '')
