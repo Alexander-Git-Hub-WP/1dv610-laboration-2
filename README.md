@@ -11,7 +11,7 @@ The module provides a reusable TextAnalyzer class that can be used by other prog
 - **Sentence analysis:** Count sentences and calculate the average number of words per sentence.
 - **Character analysis:** Count characters, letters, numbers and whitespace.
 - **Word statistics:** Calculate average word length and find the most common words.
-- **Swedish letter support:** Supports the Swedish letters å, ä and ö.
+- **Swedish alphabet support:** Word and letter analysis supports the Swedish alphabet (A–Z, Å, Ä and Ö). Characters outside the Swedish alphabet are treated as word separators.
 - **Modern ECMAScript Modules (ESM):** Full native support for `import`/`export` syntax.
 - **Unit Testing:** Pre-configured with [Vitest](https://vitest.dev) for automated unit testing.
 - **Linting & Code Quality:** Strict code analysis using [ESLint](https://eslint.org) integrated with custom `@lnu/eslint-config` rules.
@@ -121,11 +121,11 @@ import { TextAnalyzer } from './src/TextAnalyzer.js'
 
 const analyzer = new TextAnalyzer('Hello world! How are you?')
 
-console.log(analyzer.getWordCount())
-console.log(analyzer.getSentenceCount())
-console.log(analyzer.getLongestWords())
-console.log(analyzer.getShortestWords())
-console.log(analyzer.getMostCommonWords())
+console.log(analyzer.getWordCount()) // 5
+console.log(analyzer.getSentenceCount()) // 2
+console.log(analyzer.getLongestWords()) // ['Hello', 'world']
+console.log(analyzer.getShortestWords()) // ['How', 'are', 'you']
+console.log(analyzer.getMostCommonWords()) // ['hello', 'world', 'how', 'are', 'you']
 ```
 
 ---
@@ -134,22 +134,20 @@ console.log(analyzer.getMostCommonWords())
 
 | Method | Description |
 |---|---|
-| `getWordCount()` | Counts the number of words in the text. |
-| `getSentenceCount()` | Counts the number of sentences in the text. |
-| `getUppercaseCount()` | Counts uppercase letters. |
-| `getLowercaseCount()` | Counts lowercase letters. |
-| `getLongestWords()` | Returns all words with the longest length. |
-| `getShortestWords()` | Returns all words with the shortest length. |
-| `getAverageWordLength()` | Returns the rounded average word length. |
+| `getWords()` | Extracts words consisting of one or more letters from the Swedish alphabet (A-Z, Å, Ä, Ö). All other characters are treated as word separators. |
+| `getWordCount()` | Counts words consisting of one or more letters from the Swedish alphabet. |
+| `getSentenceCount()` | Counts sentences containing at least one letter from the Swedish alphabet. |
+| `getUppercaseCount()` | Counts uppercase letters from the Swedish alphabet. |
+| `getLowercaseCount()` | Counts lowercase letters from the Swedish alphabet. |
+| `getLongestWords()` | Returns all words with the longest length, using Swedish alphabet characters only. |
+| `getShortestWords()` | Returns all words with the shortest length, using Swedish alphabet characters only. |
+| `getAverageWordLength()` | Returns the rounded average length of words consisting of Swedish alphabet characters. |
 | `getAverageWordsPerSentence()` | Returns the rounded average number of words per sentence. |
-| `getCharacterCount()` | Counts all characters, including whitespace. |
-| `getCharacterCountWithoutWhitespace()` | Counts all characters except whitespace. |
-| `getNumberCount()` | Counts numeric characters. |
-| `getLetterCount()` | Counts all letters. |
-| `getMostCommonWords()` | Returns all words with the highest frequency. |
-
-Words consist of one or more letters. Non-letter characters are treated as word separators. Swedish letters å, ä and ö are supported.
-Words are compared case-insensitively when calculating the most common words.
+| `getCharacterCount()` | Counts all UTF-16 code units, including whitespace and punctuation. |
+| `getCharacterCountWithoutWhitespace()` | Counts all UTF-16 code units except whitespace. |
+| `getNumberCount()` | Counts numeric characters (0–9). |
+| `getLetterCount()` | Counts uppercase and lowercase letters from the Swedish alphabet. |
+| `getMostCommonWords()` | Returns the most frequent words, compared case-insensitively, in lowercase. |
 
 ---
 
