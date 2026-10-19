@@ -7,11 +7,11 @@ The module provides a reusable TextAnalyzer class that can be used by other prog
 ## 🚀 Features
 
 - **Text analysis:** Analyze text and retrieve different statistics about its contents.
-- **Word analysis:** Count words and find the longest and shortest words.
+- **Word analysis:** Extract words, count words and find the longest and shortest words.
 - **Sentence analysis:** Count sentences and calculate the average number of words per sentence.
 - **Character analysis:** Count characters, letters, numbers and whitespace.
 - **Word statistics:** Calculate average word length and find the most common words.
-- **Swedish alphabet support:** Word and letter analysis supports the Swedish alphabet (A–Z, Å, Ä and Ö). Characters outside the Swedish alphabet are treated as word separators.
+- **Swedish alphabet support:** Word and letter analysis supports the Swedish alphabet (A–Z, Å, Ä and Ö). Characters outside the Swedish alphabet, including accented letters such as é and á, are treated as word separators. For example, café is extracted as caf.
 - **Modern ECMAScript Modules (ESM):** Full native support for `import`/`export` syntax.
 - **Unit Testing:** Pre-configured with [Vitest](https://vitest.dev) for automated unit testing.
 - **Linting & Code Quality:** Strict code analysis using [ESLint](https://eslint.org) integrated with custom `@lnu/eslint-config` rules.
@@ -149,6 +149,16 @@ console.log(analyzer.getMostCommonWords()) // ['hello', 'world', 'how', 'are', '
 | `getLetterCount()` | Counts uppercase and lowercase letters from the Swedish alphabet. |
 | `getMostCommonWords()` | Returns the most frequent words, compared case-insensitively, in lowercase. |
 
+### Character Counting
+
+The character-counting methods use JavaScript's UTF-16 string representation. They count UTF-16 code units rather than Unicode code points or user-perceived characters. For example, 😀 is counted as two code units, so getCharacterCount() returns 2 for this character.
+
+```javascript
+'Hello'.length       // 5
+'åäö'.length         // 3
+'😀'.length          // 2
+```
+
 ---
 
 ## 📁 Project Structure
@@ -174,6 +184,7 @@ The app.js file is a separate test application used to manually run and inspect 
 The module is tested using automated unit tests with Vitest.
 The test suite covers the public methods of TextAnalyzer, including:
 
+- Word extraction and word seperators
 - Normal text input
 - Empty text
 - Whitespace and punctuation
