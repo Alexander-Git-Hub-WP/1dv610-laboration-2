@@ -1,6 +1,44 @@
 import { describe, it, expect } from 'vitest'
 import { TextAnalyzer } from './TextAnalyzer'
 
+describe('getWords()', () => {
+  it('should return all words in the text', () => {
+    const analyzer = new TextAnalyzer('Hello my beautiful world')
+    const result = analyzer.getWords()
+    expect(result).toEqual(['Hello', 'my', 'beautiful', 'world'])
+  })
+
+  it('should return an empty array when the text is empty', () => {
+    const analyzer = new TextAnalyzer('')
+    const result = analyzer.getWords()
+    expect(result).toEqual([])
+  })
+
+  it('should treat multiple spaces, tabs and line breaks as separators', () => {
+    const analyzer = new TextAnalyzer('Hello  my\tbeautiful\nworld')
+    const result = analyzer.getWords()
+    expect(result).toEqual(['Hello', 'my', 'beautiful', 'world'])
+  })
+
+  it('should ignore punctuation and numbers', () => {
+    const analyzer = new TextAnalyzer('Hello, world! 123')
+    const result = analyzer.getWords()
+    expect(result).toEqual(['Hello', 'world'])
+  })
+
+  it('should treat Swedish letters as part of words', () => {
+    const analyzer = new TextAnalyzer('ÅÄÖ åäö Trädgård')
+    const result = analyzer.getWords()
+    expect(result).toEqual(['ÅÄÖ', 'åäö', 'Trädgård'])
+  })
+
+  it('should treat characters outside the Swedish alphabet as separators', () => {
+    const analyzer = new TextAnalyzer('Hello café world')
+    const result = analyzer.getWords()
+    expect(result).toEqual(['Hello', 'caf', 'world'])
+  })
+})
+
 describe('getWordCount()', () => {
   it('should count the number of words', () => {
     const analyzer = new TextAnalyzer('Hello my beautiful world')
