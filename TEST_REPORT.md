@@ -8,8 +8,7 @@ that someone else could carry out the same tests. What was hardest to test, and 
 *If you used a testing framework, you may link to its generated report or include screenshots of
 the test run here.*
 
-**Answer:** The TextAnalyzer module was tested using automated unit tests with Vitest. The tests focus on the public methods of the TextAnalyzer class and verify that the methods return the expected results for different types of text input.
-The tests cover normal text, empty text, whitespace, punctuation, uppercase and lowercase letters, numbers, Swedish letters (å, ä, and ö), word lengths, sentence lengths, character counts, and word frequency.
+**Answer:** The TextAnalyzer module was tested using automated unit tests with Vitest. The tests focus on the public methods of the TextAnalyzer class and verify that the methods return the expected results for different types of text input. The tests cover word extraction and word separators, empty text, whitespace, punctuation, uppercase and lowercase letters, numbers, Swedish letters (A-Z, Å, Ä, and Ö), word lengths, sentence lengths, character counts, and word frequency.
 
 The command-line argument handling in app.js was tested separately to verify that text provided through the command line is correctly passed to TextAnalyzer.
 
@@ -23,6 +22,7 @@ Also it was challenging to decide when enough tests had been written to provide 
 
 | What was tested                                                        | How it was tested                                                                                                       | Result                                                                       |
 | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `getWords()` extracts words consisting of letters from the Swedish alphabet. | Automated unit tests (Vitest): tested normal text, empty text, whitespace, punctuation, numbers, Swedish letters, and accented letters outside the Swedish alphabet (e.g. é and á). | ✅ Passed.                                                                    |
 | `getWordCount()` returns the total number of words in the text argument. | Automated unit tests (Vitest): tested normal text, empty text, multiple spaces, tabs, line breaks, and surrounding whitespace. | ✅ Passed.                                                                    |
 | `getSentenceCount()` returns the total number of sentences in the text argument.         | Automated unit tests (Vitest): tested multiple sentences, different sentence-ending punctuation, consecutive punctuation, sentences without ending punctuation, and text containing only punctuation.	| ✅ Passed.                                                    |
 | `getUppercaseCount()` returns the total number of uppercase letters in the text argument.         | Automated unit tests (Vitest): tested uppercase and lowercase letters, Swedish uppercase letters, numbers, spaces, and punctuation.	| ✅ Passed.                                                  |
