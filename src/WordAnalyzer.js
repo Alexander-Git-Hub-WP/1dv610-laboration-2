@@ -41,25 +41,7 @@ export class WordAnalyzer {
    * @returns {string[]} The longest words in the text.
    */
   getLongestWords() {
-    const words = this.#extractWords()
-    if (words.length === 0) {
-      return []
-    }
-
-    let longestLength = words[0].length
-    const longestWords = []
-
-    for (const word of words) {
-      if (word.length > longestLength) {
-        longestLength = word.length
-        longestWords.length = 0
-        longestWords.push(word)
-      } else if (word.length === longestLength) {
-        longestWords.push(word)
-      }
-    }
-
-    return longestWords
+    return this.#findLongestOrShortestWords('longest')
   }
 
   /**
@@ -68,25 +50,7 @@ export class WordAnalyzer {
    * @returns {string[]} The shortest words in the text.
    */
   getShortestWords() {
-    const words = this.#extractWords()
-    if (words.length === 0) {
-      return []
-    }
-
-    let shortestLength = words[0].length
-    const shortestWords = []
-
-    for (const word of words) {
-      if (word.length < shortestLength) {
-        shortestLength = word.length
-        shortestWords.length = 0
-        shortestWords.push(word)
-      } else if (word.length === shortestLength) {
-        shortestWords.push(word)
-      }
-    }
-
-    return shortestWords
+    return this.#findLongestOrShortestWords('shortest')
   }
 
   /**
@@ -158,5 +122,46 @@ export class WordAnalyzer {
    */
   #extractWords() {
     return this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+  }
+
+  /**
+   * Helper method to find either the longest or shortest words.
+   * 
+   * @param {string} target - 'longest' or 'shortest'
+   * @returns {string[]} - The matching words.
+   */
+  #findLongestOrShortestWords(target) {
+    const words = this.#extractWords()
+    
+    if (words.length === 0) {
+      return []
+    }
+
+    let targetLength = words[0].length
+    const result = []
+
+    for (const word of words) {
+      if (target === 'longest') {
+        if (word.length > targetLength) {
+          targetLength = word.length
+          result.length = 0
+          result.push(word)
+        } else if (word.length === targetLength) {
+          result.push(word)
+        }
+      }
+
+      if (target === 'shortest') {
+        if (word.length < targetLength) {
+          targetLength = word.length
+          result.length = 0
+          result.push(word)
+        } else if (word.length === targetLength) {
+          result.push(word)
+        }
+      }
+    }
+
+    return result
   }
 }
