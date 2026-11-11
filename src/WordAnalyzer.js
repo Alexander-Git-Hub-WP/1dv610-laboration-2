@@ -32,8 +32,7 @@ export class WordAnalyzer {
    * @returns {number} The number of words in the text.
    */
   getWordCount() {
-    const words = this.#extractWords()
-    return words.length
+    return this.#extractWords().length
   }
 
   /**
