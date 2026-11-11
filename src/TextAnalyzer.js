@@ -1,4 +1,5 @@
 import { WordAnalyzer } from './WordAnalyzer.js'
+import { SentenceAnalyzer } from './SentanceAnalyzer.js'
 
 /**
  * Analyzes a text and provides statistics about its contents.
@@ -14,6 +15,7 @@ import { WordAnalyzer } from './WordAnalyzer.js'
 export class TextAnalyzer {
   #text
   #wordAnalyzer
+  #sentenceAnalyzer
 
   /**
    * Creates a TextAnalyzer for the provided text.
@@ -23,6 +25,7 @@ export class TextAnalyzer {
   constructor(text) {
     this.#text = text
     this.#wordAnalyzer = new WordAnalyzer(text)
+    this.#sentenceAnalyzer = new SentenceAnalyzer(text)
   }
 
   /**
@@ -55,7 +58,7 @@ export class TextAnalyzer {
    * @returns {number} The number of sentences in the text.
    */
   getSentenceCount() {
-    return this.#wordAnalyzer.getSentenceCount()
+    return this.#sentenceAnalyzer.getSentenceCount()
   }
 
   /**
