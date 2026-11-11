@@ -16,14 +16,11 @@ export class WordAnalyzer {
 
   /**
    * Extracts words from the text.
-   *
-   * Words consist of one or more letters from the Swedish alphabet.
-   * Characters outside the Swedish alphabet are treated as word separators.
-   *
-   * @returns {string[]} The words in the text.
+   * 
+   * @returns {string[]} The extracted words in the text.
    */
   getWords() {
-    return this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    return this.#extractWords()
   }
 
   /**
@@ -32,8 +29,7 @@ export class WordAnalyzer {
    * @returns {number} The number of words in the text.
    */
   getWordCount() {
-    const words = this.getWords()
-
+    const words = this.#extractWords()
     return words.length
   }
 
@@ -43,7 +39,7 @@ export class WordAnalyzer {
    * @returns {string[]} The longest words in the text.
    */
   getLongestWords() {
-    const words = this.getWords()
+    const words = this.#extractWords()
     if (words.length === 0) {
       return []
     }
@@ -70,7 +66,7 @@ export class WordAnalyzer {
    * @returns {string[]} The shortest words in the text.
    */
   getShortestWords() {
-    const words = this.getWords()
+    const words = this.#extractWords()
     if (words.length === 0) {
       return []
     }
@@ -98,7 +94,7 @@ export class WordAnalyzer {
    * @returns {number} The rounded average word length.
    */
   getAverageWordLength() {
-    const words = this.getWords()
+    const words = this.#extractWords()
 
     if (words.length === 0) {
       return 0
@@ -121,7 +117,7 @@ export class WordAnalyzer {
    * @returns {string[]} The most common words in the text.
    */
   getMostCommonWords() {
-    const words = this.getWords()
+    const words = this.#extractWords()
     const wordCounts = {}
 
     for (const word of words) {
@@ -148,5 +144,17 @@ export class WordAnalyzer {
     }
 
     return mostCommonWords
+  }
+
+  /**
+   * Extracts words from the text.
+   *
+   * Words consist of one or more letters from the Swedish alphabet.
+   * Characters outside the Swedish alphabet are treated as word separators.
+   *
+   * @returns {string[]} The extracted words in the text.
+   */
+  #extractWords() {
+    return this.#text.match(/[A-ZÅÄÖ]+/gi) || []
   }
 }
