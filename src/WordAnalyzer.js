@@ -17,7 +17,7 @@ export class WordAnalyzer {
   /**
    * Gets words from the text.
    * 
-   * Words consist of one or more letters from the Swedish alphabet (A-Z, Å, Ä, Ö).
+   * Words consist of one or more letters from the Swedish alphabet (case-insensitive).
    * Characters outside the Swedish alphabet are treated as word separators.
    * 
    * @returns {string[]} The extracted words.
