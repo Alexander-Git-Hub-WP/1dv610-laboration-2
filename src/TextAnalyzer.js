@@ -1,5 +1,5 @@
 import { WordAnalyzer } from './WordAnalyzer.js'
-import { SentenceAnalyzer } from './SentanceAnalyzer.js'
+import { SentenceAnalyzer } from './SentenceAnalyzer.js'
 import { CharacterAnalyzer } from './CharacterAnalyzer.js'
 
 /**
