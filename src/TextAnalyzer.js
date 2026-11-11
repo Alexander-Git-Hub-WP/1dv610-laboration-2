@@ -1,3 +1,5 @@
+import { WordAnalyzer } from './WordAnalyzer.js'
+
 /**
  * Analyzes a text and provides statistics about its contents.
  *
@@ -11,6 +13,7 @@
  */
 export class TextAnalyzer {
   #text
+  #wordAnalyzer
 
   /**
    * Creates a TextAnalyzer for the provided text.
@@ -19,18 +22,19 @@ export class TextAnalyzer {
    */
   constructor(text) {
     this.#text = text
+    this.#wordAnalyzer = new WordAnalyzer(text)
   }
 
   /**
-   * Extracts words from the text.
-   *
-   * Words consist of one or more letters from the Swedish alphabet.
+   * Gets words from the text.
+   * 
+   * Words consist of one or more letters from the Swedish alphabet (case-insensitive).
    * Characters outside the Swedish alphabet are treated as word separators.
    *
    * @returns {string[]} The words in the text.
    */
   getWords() {
-    return this.#text.match(/[A-ZÅÄÖ]+/gi) || []
+    return this.#wordAnalyzer.getWords()
   }
 
   /**
@@ -39,31 +43,19 @@ export class TextAnalyzer {
    * @returns {number} The number of words in the text.
    */
   getWordCount() {
-    const words = this.getWords()
-
-    return words.length
+    return this.#wordAnalyzer.getWordCount()
   }
 
   /**
    * Counts the number of sentences in the text.
-   *
+   * 
    * A sentence ends with a period, exclamation mark or question mark.
-   * Only sentences containing at least one letter from the Swedish alphabet are counted.
+   * Only sentences containing at least one letter from the Swedish alphabet are counted.   
    *
    * @returns {number} The number of sentences in the text.
    */
   getSentenceCount() {
-    const sentences = this.#text.split(/[.!?]+/)
-
-    let sentenceCount = 0
-
-    for (const sentence of sentences) {
-      if (/[A-ZÅÄÖ]/i.test(sentence)) {
-        sentenceCount++
-      }
-    }
-
-    return sentenceCount
+    return this.#wordAnalyzer.getSentenceCount()
   }
 
   /**
@@ -94,25 +86,7 @@ export class TextAnalyzer {
    * @returns {string[]} The longest words in the text.
    */
   getLongestWords() {
-    const words = this.getWords()
-    if (words.length === 0) {
-      return []
-    }
-
-    let longestLength = words[0].length
-    const longestWords = []
-
-    for (const word of words) {
-      if (word.length > longestLength) {
-        longestLength = word.length
-        longestWords.length = 0
-        longestWords.push(word)
-      } else if (word.length === longestLength) {
-        longestWords.push(word)
-      }
-    }
-
-    return longestWords
+    return this.#wordAnalyzer.getLongestWords()
   }
 
   /**
@@ -121,51 +95,23 @@ export class TextAnalyzer {
    * @returns {string[]} The shortest words in the text.
    */
   getShortestWords() {
-    const words = this.getWords()
-    if (words.length === 0) {
-      return []
-    }
-
-    let shortestLength = words[0].length
-    const shortestWords = []
-
-    for (const word of words) {
-      if (word.length < shortestLength) {
-        shortestLength = word.length
-        shortestWords.length = 0
-        shortestWords.push(word)
-      } else if (word.length === shortestLength) {
-        shortestWords.push(word)
-      }
-    }
-
-    return shortestWords
+    return this.#wordAnalyzer.getShortestWords()
   }
 
   /**
    * Gets the average length of all words in the text.
+   * 
    * The result is rounded to the nearest whole number.
    *
    * @returns {number} The rounded average word length.
    */
   getAverageWordLength() {
-    const words = this.getWords()
-
-    if (words.length === 0) {
-      return 0
-    }
-
-    let totalWordLength = 0
-
-    for (const word of words) {
-      totalWordLength += word.length
-    }
-
-    return Math.round(totalWordLength / words.length)
+    return this.#wordAnalyzer.getAverageWordLength()
   }
 
   /**
    * Gets the average number of words in each sentence.
+   * 
    * The result is rounded to the nearest whole number.
    *
    * @returns {number} The rounded average number of words per sentence.
@@ -229,38 +175,12 @@ export class TextAnalyzer {
 
   /**
    * Gets the most common words in the text.
-   *
+   * 
    * Words are compared case-insensitively and returned in lowercase.
    *
    * @returns {string[]} The most common words in the text.
    */
   getMostCommonWords() {
-    const words = this.getWords()
-    const wordCounts = {}
-
-    for (const word of words) {
-      const normalizedWord = word.toLowerCase()
-
-      if (wordCounts[normalizedWord]) {
-        wordCounts[normalizedWord]++
-      } else {
-        wordCounts[normalizedWord] = 1
-      }
-    }
-
-    let highestCount = 0
-    const mostCommonWords = []
-
-    for (const word in wordCounts) {
-      if (wordCounts[word] > highestCount) {
-        highestCount = wordCounts[word]
-        mostCommonWords.length = 0
-        mostCommonWords.push(word)
-      } else if (wordCounts[word] === highestCount) {
-        mostCommonWords.push(word)
-      }
-    }
-
-    return mostCommonWords
+    return this.#wordAnalyzer.getMostCommonWords()
   }
 }
