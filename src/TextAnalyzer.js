@@ -14,7 +14,6 @@ import { CharacterAnalyzer } from './CharacterAnalyzer.js'
  * @param {string} text - The text to analyze.
  */
 export class TextAnalyzer {
-  #text
   #wordAnalyzer
   #sentenceAnalyzer
   #characterAnalyzer
@@ -25,7 +24,6 @@ export class TextAnalyzer {
    * @param {string} text - The text to analyze.
    */
   constructor(text) {
-    this.#text = text
     this.#wordAnalyzer = new WordAnalyzer(text)
     this.#sentenceAnalyzer = new SentenceAnalyzer(text)
     this.#characterAnalyzer = new CharacterAnalyzer(text)
