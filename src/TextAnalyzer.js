@@ -1,5 +1,6 @@
 import { WordAnalyzer } from './WordAnalyzer.js'
 import { SentenceAnalyzer } from './SentanceAnalyzer.js'
+import { CharacterAnalyzer } from './CharacterAnalyzer.js'
 
 /**
  * Analyzes a text and provides statistics about its contents.
@@ -16,6 +17,7 @@ export class TextAnalyzer {
   #text
   #wordAnalyzer
   #sentenceAnalyzer
+  #characterAnalyzer
 
   /**
    * Creates a TextAnalyzer for the provided text.
@@ -26,6 +28,7 @@ export class TextAnalyzer {
     this.#text = text
     this.#wordAnalyzer = new WordAnalyzer(text)
     this.#sentenceAnalyzer = new SentenceAnalyzer(text)
+    this.#characterAnalyzer = new CharacterAnalyzer(text)
   }
 
   /**
@@ -67,9 +70,7 @@ export class TextAnalyzer {
    * @returns {number} The number of uppercase letters in the text.
    */
   getUppercaseCount() {
-    const uppercases = this.#text.match(/[A-ZÅÄÖ]/g) || []
-
-    return uppercases.length
+    return this.#characterAnalyzer.getUppercaseCount()
   }
 
   /**
@@ -78,9 +79,7 @@ export class TextAnalyzer {
    * @returns {number} The number of lowercase letters in the text.
    */
   getLowercaseCount() {
-    const lowercases = this.#text.match(/[a-zåäö]/g) || []
-
-    return lowercases.length
+   return this.#characterAnalyzer.getLowercaseCount()
   }
 
   /**
@@ -137,7 +136,7 @@ export class TextAnalyzer {
    * @returns {number} The number of UTF-16 code units in the text.
    */
   getCharacterCount() {
-    return this.#text.length
+    return this.#characterAnalyzer.getCharacterCount()
   }
 
   /**
@@ -148,9 +147,7 @@ export class TextAnalyzer {
    * excluding whitespace characters.
    */
   getCharacterCountWithoutWhitespace() {
-    const characters = this.#text.replace(/\s+/g, '')
-
-    return characters.length
+    return this.#characterAnalyzer.getCharacterCountWithoutWhitespace()
   }
 
   /**
@@ -159,9 +156,7 @@ export class TextAnalyzer {
    * @returns {number} The number of numeric characters in the text.
    */
   getNumberCount() {
-    const numbers = this.#text.match(/\d/g) || []
-
-    return numbers.length
+    return this.#characterAnalyzer.getNumberCount()
   }
 
   /**
@@ -170,10 +165,7 @@ export class TextAnalyzer {
    * @returns {number} The number of letters in the text.
    */
   getLetterCount() {
-    const uppercaseCount = this.getUppercaseCount()
-    const lowercaseCount = this.getLowercaseCount()
-
-    return uppercaseCount + lowercaseCount
+    return this.#characterAnalyzer.getLetterCount()
   }
 
   /**
