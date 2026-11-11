@@ -16,10 +16,10 @@ export class WordAnalyzer {
 
   /**
    * Gets words from the text.
-   * 
+   *
    * Words consist of one or more letters from the Swedish alphabet (case-insensitive).
    * Characters outside the Swedish alphabet are treated as word separators.
-   * 
+   *
    * @returns {string[]} The extracted words.
    */
   getWords() {
@@ -74,7 +74,7 @@ export class WordAnalyzer {
 
     return Math.round(totalWordLength / words.length)
   }
-  
+
   /**
    * Gets the most common words in the text.
    *
@@ -114,7 +114,7 @@ export class WordAnalyzer {
 
   /**
    * Helper method to extract words from the text.
-   * 
+   *
    * Words consist of one or more letters from the Swedish alphabet (case-insensitive).
    * Characters outside the Swedish alphabet are treated as word separators.
    *
@@ -126,13 +126,13 @@ export class WordAnalyzer {
 
   /**
    * Helper method to find either the longest or shortest words.
-   * 
+   *
    * @param {string} target - 'longest' or 'shortest'
    * @returns {string[]} - The matching words.
    */
   #findLongestOrShortestWords(target) {
     const words = this.#extractWords()
-    
+
     if (words.length === 0) {
       return []
     }

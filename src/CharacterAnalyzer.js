@@ -68,12 +68,12 @@ export class CharacterAnalyzer {
    * @returns {number} The number of lowercase letters in the text.
    */
   getLowercaseCount() {
-   return this.#extractCharacters(/[a-zåäö]/g).length
+    return this.#extractCharacters(/[a-zåäö]/g).length
   }
 
   /**
    * Helper method to extract characters matching a regex.
-   * 
+   *
    * @param {RegExp} regex - The regular expression to match.
    * @returns {string[]} The extracted characters.
    */

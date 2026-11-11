@@ -16,9 +16,9 @@ export class SentenceAnalyzer {
 
   /**
    * Counts the number of sentences in the text.
-   * 
+   *
    * A sentence ends with a period, exclamation mark or question mark.
-   * Only sentences containing at least one letter from the Swedish alphabet are counted.   
+   * Only sentences containing at least one letter from the Swedish alphabet are counted.  
    *
    * @returns {number} The number of sentences in the text.
    */
@@ -37,7 +37,7 @@ export class SentenceAnalyzer {
 
   /**
    * Helper method to split and extract sentences from the text.
-   * 
+   *
    * @returns {string[]} The extracted sentences.
    */
   #extractSentences() {

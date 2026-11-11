@@ -31,7 +31,7 @@ export class TextAnalyzer {
 
   /**
    * Gets words from the text.
-   * 
+   *
    * Words consist of one or more letters from the Swedish alphabet (case-insensitive).
    * Characters outside the Swedish alphabet are treated as word separators.
    *
@@ -52,9 +52,9 @@ export class TextAnalyzer {
 
   /**
    * Counts the number of sentences in the text.
-   * 
+   *
    * A sentence ends with a period, exclamation mark or question mark.
-   * Only sentences containing at least one letter from the Swedish alphabet are counted.   
+   * Only sentences containing at least one letter from the Swedish alphabet are counted.  
    *
    * @returns {number} The number of sentences in the text.
    */
@@ -77,7 +77,7 @@ export class TextAnalyzer {
    * @returns {number} The number of lowercase letters in the text.
    */
   getLowercaseCount() {
-   return this.#characterAnalyzer.getLowercaseCount()
+    return this.#characterAnalyzer.getLowercaseCount()
   }
 
   /**
@@ -100,7 +100,7 @@ export class TextAnalyzer {
 
   /**
    * Gets the average length of all words in the text.
-   * 
+   *
    * The result is rounded to the nearest whole number.
    *
    * @returns {number} The rounded average word length.
@@ -111,7 +111,7 @@ export class TextAnalyzer {
 
   /**
    * Gets the average number of words in each sentence.
-   * 
+   *
    * The result is rounded to the nearest whole number.
    *
    * @returns {number} The rounded average number of words per sentence.
@@ -168,7 +168,7 @@ export class TextAnalyzer {
 
   /**
    * Gets the most common words in the text.
-   * 
+   *
    * Words are compared case-insensitively and returned in lowercase.
    *
    * @returns {string[]} The most common words in the text.
