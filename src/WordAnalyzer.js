@@ -15,9 +15,12 @@ export class WordAnalyzer {
   }
 
   /**
-   * Extracts words from the text.
+   * Gets words from the text.
    * 
-   * @returns {string[]} The extracted words in the text.
+   * Words consist of one or more letters from the Swedish alphabet (A-Z, Å, Ä, Ö).
+   * Characters outside the Swedish alphabet are treated as word separators.
+   * 
+   * @returns {string[]} The extracted words.
    */
   getWords() {
     return this.#extractWords()
@@ -29,7 +32,7 @@ export class WordAnalyzer {
    * @returns {number} The number of words in the text.
    */
   getWordCount() {
-    const words = this.#extractWords()
+    const words = this.getWords()
     return words.length
   }
 
@@ -39,7 +42,7 @@ export class WordAnalyzer {
    * @returns {string[]} The longest words in the text.
    */
   getLongestWords() {
-    const words = this.#extractWords()
+    const words = this.getWords()
     if (words.length === 0) {
       return []
     }
@@ -66,7 +69,7 @@ export class WordAnalyzer {
    * @returns {string[]} The shortest words in the text.
    */
   getShortestWords() {
-    const words = this.#extractWords()
+    const words = this.getWords()
     if (words.length === 0) {
       return []
     }
@@ -94,7 +97,7 @@ export class WordAnalyzer {
    * @returns {number} The rounded average word length.
    */
   getAverageWordLength() {
-    const words = this.#extractWords()
+    const words = this.getWords()
 
     if (words.length === 0) {
       return 0
@@ -117,7 +120,7 @@ export class WordAnalyzer {
    * @returns {string[]} The most common words in the text.
    */
   getMostCommonWords() {
-    const words = this.#extractWords()
+    const words = this.getWords()
     const wordCounts = {}
 
     for (const word of words) {
@@ -147,12 +150,9 @@ export class WordAnalyzer {
   }
 
   /**
-   * Extracts words from the text.
+   * Helper method to extract words from the text.
    *
-   * Words consist of one or more letters from the Swedish alphabet.
-   * Characters outside the Swedish alphabet are treated as word separators.
-   *
-   * @returns {string[]} The extracted words in the text.
+   * @returns {string[]} The extracted words.
    */
   #extractWords() {
     return this.#text.match(/[A-ZÅÄÖ]+/gi) || []
