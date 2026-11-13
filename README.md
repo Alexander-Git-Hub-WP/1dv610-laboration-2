@@ -166,15 +166,17 @@ The character-counting methods use JavaScript's UTF-16 string representation. Th
 ├── src/
 │   ├── app.js                # Command-line interface for using TextAnalyzer
 │   ├── app.test.js           # Unit tests for the command-line application
-│   ├── TextAnalyzer.js       # Reusable TextAnalyzer module
-│   └── TextAnalyzer.test.js  # Unit tests for TextAnalyzer
+│   ├── CharacterAnalyzer.js  # Support class for character-related analysis
+│   ├── SentenceAnalyzer.js   # Support class for sentence-related analysis
+│   ├── TextAnalyzer.js       # Main class for text-related analysis
+│   ├── TextAnalyzer.test.js  # Unit tests for TextAnalyzer
+│   └── WordAnalyzer.js       # Support class for word-related analysis
 ├── TEST_REPORT.md            # Test report
 ├── package.json              # Project configuration, scripts, and dependencies
 └── LICENSE                   # Unlicense (Public Domain dedication)
 ```
 
-The TextAnalyzer.js file contains the reusable module intended for other programmers.
-The app.js file is a separate test application used to manually run and inspect the module.
+The TextAnalyzer.js file acts as the main entry point and contains the reusable module together with its support classes (CharacterAnalyzer.js, SentenceAnalyzer.js, and WordAnalyzer.js). The app.js file is a separate test application used to manually run and inspect the module.
 
 ---
 
