@@ -1,5 +1,5 @@
 /**
- * SentenceAnalyzer can be used to extract sentences and count sentences.
+ * SentenceAnalyzer can be used to extract sentences, and count sentences.
  */
 export class SentenceAnalyzer {
   #text
