@@ -171,25 +171,31 @@ describe('getLongestWords()', () => {
   it('should return the longest words regardless of their position', () => {
     const analyzer = new TextAnalyzer('Beautiful is the longest')
     const result = analyzer.getLongestWords()
-    expect(result).toEqual(['Beautiful'])
+    expect(result).toEqual(['beautiful'])
   })
 
   it('should ignore punctuation when determining the longest words', () => {
     const analyzer = new TextAnalyzer('Hello dude!')
     const result = analyzer.getLongestWords()
-    expect(result).toEqual(['Hello'])
+    expect(result).toEqual(['hello'])
   })
 
   it('should return all words with the longest length', () => {
     const analyzer = new TextAnalyzer('Hello my cute world!')
     const result = analyzer.getLongestWords()
-    expect(result).toEqual(['Hello', 'world'])
+    expect(result).toEqual(['hello', 'world'])
   })
 
   it('should treat Swedish letters as part of a word', () => {
     const analyzer = new TextAnalyzer('Trädgårdsböcker är roliga att läsa')
     const result = analyzer.getLongestWords()
-    expect(result).toEqual(['Trädgårdsböcker'])
+    expect(result).toEqual(['trädgårdsböcker'])
+  })
+
+  it('should return each unique words as one word', () => {
+    const analyzer = new TextAnalyzer('Är du komplett, eller är du komplett?')
+    const result = analyzer.getLongestWords()
+    expect(result).toEqual(['komplett'])
   })
 })
 
@@ -203,7 +209,7 @@ describe('getShortestWords()', () => {
   it('should return the shortest words regardless of their position', () => {
     const analyzer = new TextAnalyzer('It will make you happy!')
     const result = analyzer.getShortestWords()
-    expect(result).toEqual(['It'])
+    expect(result).toEqual(['it'])
   })
 
   it('should ignore punctuation when determining the shortest words', () => {
@@ -215,11 +221,17 @@ describe('getShortestWords()', () => {
   it('should return all words with the shortest length', () => {
     const analyzer = new TextAnalyzer('Hello beautiful world!')
     const result = analyzer.getShortestWords()
-    expect(result).toEqual(['Hello', 'world'])
+    expect(result).toEqual(['hello', 'world'])
   })
 
   it('should treat Swedish letters as part of a word', () => {
     const analyzer = new TextAnalyzer('Trädgårdsböcker är roliga att läsa')
+    const result = analyzer.getShortestWords()
+    expect(result).toEqual(['är'])
+  })
+
+  it('should return each unique words as one word', () => {
+    const analyzer = new TextAnalyzer('Vad är man, är man trött?')
     const result = analyzer.getShortestWords()
     expect(result).toEqual(['är'])
   })
