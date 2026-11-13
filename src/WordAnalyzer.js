@@ -83,19 +83,7 @@ export class WordAnalyzer {
    * @returns {string[]} The most common words in the text.
    */
   getMostCommonWords() {
-    const words = this.#extractWords()
-    const wordCounts = {}
-
-    for (const word of words) {
-      const normalizedWord = word.toLowerCase()
-
-      if (wordCounts[normalizedWord]) {
-        wordCounts[normalizedWord]++
-      } else {
-        wordCounts[normalizedWord] = 1
-      }
-    }
-
+    const wordCounts = this.#findWordFrequencies()
     let highestCount = 0
     const mostCommonWords = []
 
@@ -164,4 +152,27 @@ export class WordAnalyzer {
 
     return result
   }
+
+  /**
+   * Helper method to find word frequencies from the text.
+   *
+   * @returns {{ [word: string]: number}} Each word (case-insensitive) with its frequency count
+   */
+  #findWordFrequencies() {
+  const words = this.#extractWords()
+  const wordCounts = {}
+
+    for (const word of words) {
+        const normalizedWord = word.toLowerCase()
+
+        if (wordCounts[normalizedWord]) {
+          wordCounts[normalizedWord]++
+        } else {
+          wordCounts[normalizedWord] = 1
+        }
+    }
+
+    return wordCounts
+  }
 }
+
