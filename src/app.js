@@ -38,15 +38,15 @@ function main() {
     console.log(`Sentences: ${analyzer.getSentenceCount()}`)
     console.log(`Uppercase: ${analyzer.getUppercaseCount()}`)
     console.log(`Lowercase: ${analyzer.getLowercaseCount()}`)
-    console.log(`Longest words: ${analyzer.getLongestWords()}`)
-    console.log(`Shortest words: ${analyzer.getShortestWords()}`)
+    console.log(`Longest words: ${analyzer.getLongestWords().join(', ')}`)
+    console.log(`Shortest words: ${analyzer.getShortestWords().join(', ')}`)
     console.log(`Average word length: ${analyzer.getAverageWordLength()}`)
     console.log(`Average words per sentence: ${analyzer.getAverageWordsPerSentence()}`)
     console.log(`Characters: ${analyzer.getCharacterCount()}`)
     console.log(`Characters without whitespace: ${analyzer.getCharacterCountWithoutWhitespace()}`)
     console.log(`Numbers: ${analyzer.getNumberCount()}`)
     console.log(`Letters: ${analyzer.getLetterCount()}`)
-    console.log(`Most common words: ${analyzer.getMostCommonWords()}`)
+    console.log(`Most common words: ${analyzer.getMostCommonWords().join(', ')}`)
   } catch (error) {
     console.error('An unexpected error occurred during execution:', error.message)
 
