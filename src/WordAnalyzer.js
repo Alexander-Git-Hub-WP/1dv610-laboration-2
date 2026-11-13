@@ -1,6 +1,6 @@
 /**
- * WordAnalyzer can be used to extract words, count words and,
- * to calculate word length statistics...
+ * WordAnalyzer can be used to extract words, get words, count words,
+ * get longest and shortest words, get average word length and most common words.
  */
 export class WordAnalyzer {
   #text
