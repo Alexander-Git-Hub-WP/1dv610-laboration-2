@@ -159,17 +159,17 @@ export class WordAnalyzer {
    * @returns {{ [word: string]: number}} Each word (case-insensitive) with its frequency count
    */
   #findWordFrequencies() {
-  const words = this.#extractWords()
-  const wordCounts = {}
+    const words = this.#extractWords()
+    const wordCounts = {}
 
     for (const word of words) {
-        const normalizedWord = word.toLowerCase()
+      const normalizedWord = word.toLowerCase()
 
-        if (wordCounts[normalizedWord]) {
-          wordCounts[normalizedWord]++
-        } else {
-          wordCounts[normalizedWord] = 1
-        }
+      if (wordCounts[normalizedWord]) {
+        wordCounts[normalizedWord]++
+      } else {
+        wordCounts[normalizedWord] = 1
+      }
     }
 
     return wordCounts

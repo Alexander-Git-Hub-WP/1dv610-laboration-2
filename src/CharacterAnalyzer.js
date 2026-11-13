@@ -1,5 +1,5 @@
 /**
- * CharacterAnalyzer can be used to extract characters, count characters, with and without whitespace, 
+ * CharacterAnalyzer can be used to extract characters, count characters, with and without whitespace,
  * count numbers, count letters and, get count uppercase and lowercase letters.
  */
 export class CharacterAnalyzer {

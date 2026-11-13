@@ -6,8 +6,8 @@ import { CharacterAnalyzer } from './CharacterAnalyzer.js'
  * Analyzes a text and provides statistics about its contents.
  *
  * TextAnalyzer can be used to get words, count words, count sentences, count uppercase and lowercase letters,
- * get longest and shortest words, get average word length, get average words per sentence, count characters, 
- * with or without whitespace, count numbers, count letters, and get most common words. 
+ * get longest and shortest words, get average word length, get average words per sentence, count characters,
+ * with or without whitespace, count numbers, count letters, and get most common words.
  *
  * @example
  * const analyzer = new TextAnalyzer('Hello world!')
