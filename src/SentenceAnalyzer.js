@@ -1,6 +1,5 @@
 /**
- * SentenceAnalyzer can be used to count sentences and,
- * to calculate word length statistics...
+ * SentenceAnalyzer can be used to extract sentences and count sentences.
  */
 export class SentenceAnalyzer {
   #text
