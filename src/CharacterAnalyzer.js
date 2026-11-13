@@ -1,6 +1,7 @@
 /**
- * CharacterAnalyzer can be used to extract words, count words and,
- * to calculate word length statistics...
+ * CharacterAnalyzer can be used to extract characters, get amount of characters,
+ * with or without whitespace, get amount of numbers, get amount of letters and,
+ * get amount of upper- or lowercase letters.
  */
 export class CharacterAnalyzer {
   #text
