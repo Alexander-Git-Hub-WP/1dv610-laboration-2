@@ -6,11 +6,10 @@ The module provides a reusable TextAnalyzer class that can be used by other prog
 
 ## 🚀 Features
 
-- **Text analysis:** Analyze text and retrieve different statistics about its contents.
-- **Word analysis:** Extract words, count words and find the longest and shortest words.
-- **Sentence analysis:** Count sentences and calculate the average number of words per sentence.
-- **Character analysis:** Count characters, letters, numbers and whitespace.
-- **Word statistics:** Calculate average word length and find the most common words.
+- **Text analysis:** Analyze text, count average number of words per sentence, retrieve different statistics.
+- **Word analysis:** Get words, count words and average word length, find the longest and shortest words, find the most common words.
+- **Sentence analysis:** Count sentences.
+- **Character analysis:** Count characters, with and without whitespace, letters and numbers, extract characters, count uppercase and lowercase letters.
 - **Swedish alphabet support:** Word and letter analysis supports the Swedish alphabet (A–Z, Å, Ä and Ö). Characters outside the Swedish alphabet, including accented letters such as é and á, are treated as word separators. For example, café is extracted as caf.
 - **Modern ECMAScript Modules (ESM):** Full native support for `import`/`export` syntax.
 - **Unit Testing:** Pre-configured with [Vitest](https://vitest.dev) for automated unit testing.
@@ -123,8 +122,8 @@ const analyzer = new TextAnalyzer('Hello world! How are you?')
 
 console.log(analyzer.getWordCount()) // 5
 console.log(analyzer.getSentenceCount()) // 2
-console.log(analyzer.getLongestWords()) // ['Hello', 'world']
-console.log(analyzer.getShortestWords()) // ['How', 'are', 'you']
+console.log(analyzer.getLongestWords()) // ['hello', 'world']
+console.log(analyzer.getShortestWords()) // ['how', 'are', 'you']
 console.log(analyzer.getMostCommonWords()) // ['hello', 'world', 'how', 'are', 'you']
 ```
 
@@ -139,8 +138,8 @@ console.log(analyzer.getMostCommonWords()) // ['hello', 'world', 'how', 'are', '
 | `getSentenceCount()` | Counts sentences containing at least one letter from the Swedish alphabet. |
 | `getUppercaseCount()` | Counts uppercase letters from the Swedish alphabet. |
 | `getLowercaseCount()` | Counts lowercase letters from the Swedish alphabet. |
-| `getLongestWords()` | Returns all words with the longest length, using Swedish alphabet characters only. |
-| `getShortestWords()` | Returns all words with the shortest length, using Swedish alphabet characters only. |
+| `getLongestWords()` | Returns all unique words (case-insensitively) with the longest length, using Swedish alphabet characters only. |
+| `getShortestWords()` | Returns all unique words (case-insensitively) with the shortest length, using Swedish alphabet characters only. |
 | `getAverageWordLength()` | Returns the rounded average length of words consisting of Swedish alphabet characters. |
 | `getAverageWordsPerSentence()` | Returns the rounded average number of words per sentence. |
 | `getCharacterCount()` | Counts all UTF-16 code units, including whitespace and punctuation. |
@@ -184,7 +183,7 @@ The app.js file is a separate test application used to manually run and inspect 
 The module is tested using automated unit tests with Vitest.
 The test suite covers the public methods of TextAnalyzer, including:
 
-- Word extraction and word seperators
+- Word extraction and word separators
 - Normal text input
 - Empty text
 - Whitespace and punctuation
