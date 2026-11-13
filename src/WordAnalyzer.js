@@ -119,7 +119,7 @@ export class WordAnalyzer {
    * @returns {string[]} - The matching words.
    */
   #findLongestOrShortestWords(target) {
-    const words = this.#extractWords()
+    const words = this.#findUniqueWords()
 
     if (words.length === 0) {
       return []
@@ -174,5 +174,23 @@ export class WordAnalyzer {
 
     return wordCounts
   }
-}
 
+  /**
+   * Helper method to find unique words from the text.
+   *
+   * @returns {string[]} Each unique word (case-insensitive)
+   */
+  #findUniqueWords() {
+    const words = this.#extractWords()
+    const uniqueWords = []
+
+    for (const word of words) {
+      const normalizedWord = word.toLowerCase()
+
+      if (!uniqueWords.includes(normalizedWord)) {
+        uniqueWords.push(normalizedWord)
+      }
+    }
+    return uniqueWords
+  }
+}
